@@ -1,2 +1,2 @@
 # VARCMP
-The Repository for the VAR
+The VARCMP repository
