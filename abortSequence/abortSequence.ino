@@ -6,7 +6,7 @@ void setup() {
   // put your setup code here, to run once:
 
   pinMode(ledPin, OUTPUT);
-  pinMode(abortIn, INPUT);
+  pinMode(abortButton, INPUT);
 
 }
 
