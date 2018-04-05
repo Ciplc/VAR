@@ -1,3 +1,5 @@
+#include <SevSeg.h>
+
 int ledPin = 13;
 int abortButton = 2;
 int abortState = 0;
@@ -17,6 +19,7 @@ void loop() {
   if (abortState == HIGH) {
 
     digitalWrite(ledPin, HIGH)
+    
   } else {}
 
   
