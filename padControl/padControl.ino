@@ -7,7 +7,7 @@ int ledPin = 13;
 
 //Variables
 int abortState;
-
+int ignitionTimer = 120;
 void setup() {
   // put your setup code here, to run once:
 
@@ -15,6 +15,9 @@ void setup() {
 
 void loop() {
 
+ delay(1000);
+ ignitionTimer = ignitionTimer -1;
+ 
  abortState = digitalRead(abortButton);
 
  if(abortState == HIGH){
