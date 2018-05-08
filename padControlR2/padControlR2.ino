@@ -5,9 +5,13 @@
 Adafruit_7segment matrix = Adafruit_7segment();
 int time = 120;
 int countdownState = 0;
+int launchPin = 7;
+int launchState = 0;
 
 void setup() {
   // put your setup code here, to run once:
+
+  pinMode(launchPin, OUTPUT);
   #ifndef __AVR_ATtiny85__
   Serial.begin(9600);
   Serial.println("PadControl Revision 2");
@@ -34,6 +38,11 @@ if(countdownState == 0){
 
   matrix.print(time + 1);
   time = time + 1;
+  if(launchState == 0){
+    
+    launchState = 1;
+    digitalWrite(HIGH, launchPin);
+  }
   
  }
  else{
@@ -44,6 +53,8 @@ if(countdownState == 0){
 
 matrix.writeDisplay();
 delay(1000);
+
+
 
 
 }

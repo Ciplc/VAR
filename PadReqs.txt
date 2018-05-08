@@ -2,9 +2,9 @@ Pad requirements:
 Fully automated, computer not involved in Poll.
 Master abort kill switch
 
-Automated Countdown
-Arm the Flight Computer
-Retract umbilical
+Automated Countdown- Complete
 Ignite ignitor
-Display time to a Seven Segment display
+Display time to a Seven Segment display- Complete
 Master abort button
+Button to start countdown/Key
+Safety Key

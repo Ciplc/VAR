@@ -1,0 +1,7 @@
+PadControl Arduino Pinout.
+
+A5
+A4
+A1
+GND1
+5V
