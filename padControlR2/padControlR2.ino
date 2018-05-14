@@ -7,10 +7,13 @@ int time = 120;
 int countdownState = 0;
 int launchPin = 7;
 int launchState = 0;
+bool abortState = false;
+int abortPin = 8;
+int abortLoopState = 0;
 
 void setup() {
-  // put your setup code here, to run once:
 
+  pinMode(abortPin, INPUT);
   pinMode(launchPin, OUTPUT);
   #ifndef __AVR_ATtiny85__
   Serial.begin(9600);
@@ -22,7 +25,7 @@ void setup() {
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+ 
 
 if(countdownState == 0){
   
@@ -47,14 +50,27 @@ if(countdownState == 0){
  }
  else{
 
-  matrix.println(9999);
+  matrix.println(8888);
  
  }
 
 matrix.writeDisplay();
-delay(1000);
-
-
-
+if(abortLoopState != 9){
+  
+  abortLoopState = abortLoopState + 1;
+    Serial.println(abortLoopState);
+    
+  delay(100);
+  
+if(digitalRead(abortPin) == HIGH){
+  
+   abortState = true;
+   Serial.println("ABORT DETECTED");
+   matrix.println(9999);
+   exit;
+   
+    }
+  }
+ 
 
 }

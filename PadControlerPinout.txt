@@ -1,7 +1,13 @@
 PadControl Arduino Pinout.
 
+SevSeg
+
 A5
 A4
-A1
+7
 GND1
 5V
+
+Abort
+
+A2
