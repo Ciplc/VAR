@@ -10,7 +10,8 @@ int launchState = 0;
 bool abortState = false;
 int abortPin = 8;
 int abortLoopState = 0;
-
+int startPin = 9;
+bool startState = false;
 void setup() {
 
   pinMode(abortPin, INPUT);
@@ -26,6 +27,8 @@ void setup() {
 
 void loop() {
  
+if(digitalRead(startPin) == HIGH || startState == true){
+  
 
 if(countdownState == 0){
   
@@ -44,7 +47,7 @@ if(countdownState == 0){
   if(launchState == 0){
     
     launchState = 1;
-    digitalWrite(HIGH, launchPin);
+    digitalWrite(launchPin, HIGH);
   }
   
  }
@@ -70,7 +73,7 @@ if(digitalRead(abortPin) == HIGH){
    exit;
    
     }
+   }
   }
- 
 
 }

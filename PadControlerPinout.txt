@@ -4,10 +4,17 @@ SevSeg
 
 A5
 A4
-7
 GND1
 5V
 
 Abort
 
-A2
+8
+
+Start
+
+9
+
+Launch
+
+7
