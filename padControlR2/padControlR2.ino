@@ -26,15 +26,19 @@ void setup() {
 }
 
 void loop() {
- 
-if(digitalRead(startPin) == HIGH || startState == true){
-  
 
+  matrix.print(0000);
+  
+if(digitalRead(startPin) == HIGH || startState == true){
+
+  startState == true;
+  
 if(countdownState == 0){
   
   if(time == 1){
     countdownState = 1;
   }
+  
   
   matrix.println(time - 1);
   time = time - 1;
@@ -53,7 +57,7 @@ if(countdownState == 0){
  }
  else{
 
-  matrix.println(8888);
+  matrix.print(8888);
  
  }
 
@@ -61,7 +65,7 @@ matrix.writeDisplay();
 if(abortLoopState != 9){
   
   abortLoopState = abortLoopState + 1;
-    Serial.println(abortLoopState);
+  Serial.println(abortLoopState);
     
   delay(100);
   
@@ -75,5 +79,4 @@ if(digitalRead(abortPin) == HIGH){
     }
    }
   }
-
 }
