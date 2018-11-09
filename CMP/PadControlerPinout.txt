@@ -1,0 +1,20 @@
+PadControl Arduino Pinout.
+
+SevSeg
+
+A5
+A4
+GND1
+5V
+
+Abort
+
+8
+
+Start
+
+9
+
+Launch
+
+7
