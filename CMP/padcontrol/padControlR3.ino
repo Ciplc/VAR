@@ -93,6 +93,11 @@ void loop(){
 
         }
 
+    //Else print error code for no start.
+    }else{
+
+        matrix.println(8888)
+
     }
 
     //Check if the abort button is being pressed
