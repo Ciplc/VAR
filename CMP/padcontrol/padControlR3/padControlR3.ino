@@ -17,11 +17,11 @@ int abortPin = 8;
 int launchPin = 7;
 
 //Status check bools
-startState = false;
-abortState = false;
-launchState = false;
-upTime = false;
-downTime = true;
+boolean startState = false;
+boolean abortState = false;
+boolean launchState = false;
+boolean upTime = false;
+boolean downTime = true;
 
 //Time counting
 int time = 120;
@@ -33,7 +33,6 @@ void setup(){
     pinMode(abortPin, INPUT);
     pinMode(launchPin, OUTPUT);
     pinMode(startPin, INPUT);
-    pinMode(keyPin, INPUT);
 
     //Begin serial conv., output PDC Rev. ver.
     #ifndef __AVR_ATtiny85__
@@ -71,8 +70,8 @@ void loop(){
         //When launch acc., start counting uptime.
         if(time == 0){
 
-            downtime = false;
-            uptime = true;
+            downTime = false;
+            upTime = true;
             launchState = true;
 
         }
@@ -96,7 +95,7 @@ void loop(){
     //Else print error code for no start.
     }else{
 
-        matrix.println(8888)
+        matrix.println(8888);
 
     }
 
