@@ -98,7 +98,11 @@ void loop(){
     //Check if the abort button is being pressed
     if(digitalRead(abortPin) == HIGH){
 
-        matrix.print("Abrt");
+        //Set abortState to true, output error to serial and code to matrix
+        abortState = true;
+        Serial.println("ABORT DETECTED");
+        matrix.print(9999);
+        exit;
 
     }
 
