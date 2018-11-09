@@ -1,10 +1,11 @@
 Pad requirements:
-Fully automated, computer not involved in Poll.
-Master abort kill switch
 
-Automated Countdown- Complete
+Fully automated, computer not involved in Poll.
+
+Master abort kill switch - Complete
+Automated Countdown - Complete
 Ignite ignitor - Complete
-Display time to a Seven Segment display- Complete
+Display time to a Seven Segment display - Complete
 Master abort button - Complete
 Button to start countdown/Key - Complete
 
