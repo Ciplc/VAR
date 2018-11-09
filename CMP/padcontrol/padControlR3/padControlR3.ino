@@ -24,7 +24,7 @@ boolean upTime = false;
 boolean downTime = true;
 
 //Time counting
-int time = 120;
+int time = 10;
 
 //Setup Loop
 void setup(){
