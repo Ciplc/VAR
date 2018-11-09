@@ -24,30 +24,35 @@ void setup() {
   
 
 }
-
+//Looping code
 void loop() {
 
   matrix.print(0000);
-  
+
+//if button is pressed and poll is TRUE
 if(digitalRead(startPin) == HIGH || startState == true){
 
   startState == true;
   
 if(countdownState == 0){
-  
+
+  //Countdown 1 second each loop
   if(time == 1){
     countdownState = 1;
   }
-  
-  
+
+  //Display time then --time
   matrix.println(time - 1);
   time = time - 1;
   
   }
  else if(countdownState == 1){
 
+  //After time has gone passed 0 count uptime.
   matrix.print(time + 1);
   time = time + 1;
+
+  //If first time around, power --> PAD
   if(launchState == 0){
     
     launchState = 1;
@@ -57,18 +62,26 @@ if(countdownState == 0){
  }
  else{
 
+  //General Error code
   matrix.print(8888);
  
  }
 
+//Output to display
 matrix.writeDisplay();
+
+
+//Honestly don't remember what this does but it works so leave it for now.
 if(abortLoopState != 9){
+
   
   abortLoopState = abortLoopState + 1;
   Serial.println(abortLoopState);
-    
+
+  //Delay 1 second in ms
   delay(100);
-  
+
+//Abort immediately 
 if(digitalRead(abortPin) == HIGH){
   
    abortState = true;
