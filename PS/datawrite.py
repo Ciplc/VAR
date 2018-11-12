@@ -1,5 +1,6 @@
 #importing sensehat, csv, and time
 #sense_emu is the sensehat -v for emulation on a RPI
+#sense_hat is the non emulated -v
 from sense_emu import SenseHat
 import csv
 import time
