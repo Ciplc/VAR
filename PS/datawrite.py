@@ -11,9 +11,6 @@ sense = SenseHat()
 #config IMU sensor https://pythonhosted.org/sense-hat/api/#imu-sensor
 sense.set_imu_config(False, False, True)
 
-#opening csv file for future use
-open("data.csv", 'a') as f
-
 #get data from the SenseHat
 def get_data():
 
@@ -31,11 +28,14 @@ def get_data():
 
     ]
 
-    write_data(results)
+    with open("data.csv", 'a') as f:
+    
+        #initializing csv writer object to write to f
+        writer = csv.writer(f)
+        writer.writerows([results])
 
 
-def write_data(dict: results):
-
-    #initializing csv writer object to write to f
-    writer = csv.writer(f)
-    writer.writerows([results])
+while True:
+    
+    get_data()
+    
