@@ -18,24 +18,30 @@ def get_data():
     temperature = sense.get_temperature()
     accelraw = sense.get_accelerometer_raw()
 
+    #accelraw is in the format z,y,x in Gs
+    accelx = accelraw['x']
+    accely = accelraw['y']
+    accelz = accelraw['z']
+
     #change results into a more friendly format for writing
     results = [
 
         time,
         pressure,
         temperature,
-        accelraw,           #accelraw is in the format x,y,z in Gs
+        accelz,
+        accely,
+        accelx
 
     ]
 
     with open("data.csv", 'a') as f:
-    
+
         #initializing csv writer object to write to f
         writer = csv.writer(f)
         writer.writerows([results])
 
 
 while True:
-    
+
     get_data()
-    
