@@ -45,3 +45,4 @@ def get_data():
 while True:
 
     get_data()
+    time.sleep(2)
