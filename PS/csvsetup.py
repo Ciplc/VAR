@@ -1,30 +1,32 @@
 import csv
 
-headers = [
+def set():
 
-	'Time',	
-	'Pressure',
-	'Temperature from Pressure',
-	'Temperature from Humidity',
-	'Humidity',
-	'Accelerometer X',
-	'Accelerometer Y',
-	'Accelerometer Z',
-	'Gyroscope X',
-	'Gyroscope Y',
-	'Gyroscope Z',
-	'Compass X',
-	'Compass Y',
-	'Compass Z',
-	'Pitch',
-	'Roll',
-	'Yaw'
+	headers = [
+	
+		'Time',	
+		'Pressure',
+		'Temperature from Pressure',
+		'Temperature from Humidity',
+		'Humidity',
+		'Accelerometer X',
+		'Accelerometer Y',
+		'Accelerometer Z',
+		'Gyroscope X',
+		'Gyroscope Y',
+		'Gyroscope Z',
+		'Compass X',
+		'Compass Y',
+		'Compass Z',
+		'Pitch',
+		'Roll',
+		'Yaw'
+	
+	]
 
-]
+	with open("data.csv", 'a') as f:
 
-with open("data.csv", 'a') as f:
+		writer = csv.writer(f)
+		writer.writerows([headers])
 
-	writer = csv.writer(f)
-	writer.writerows([headers])
-
-print("Complete")
+	print("Complete")

@@ -91,7 +91,7 @@ def csv_setup(argv):
 	elif(argv == 'n'):
             print("2")
             print("New mode")
-            setup()
+            setup.set()
             return("Complete")
 	else:
             print("3")
