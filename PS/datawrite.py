@@ -8,7 +8,7 @@ import datetime
 
 #initializing sensehat opject
 sense = SenseHat()
-counter = 0
+counter = 1
 #config IMU sensor https://pythonhosted.org/sense-hat/api/#imu-sensor
 sense.set_imu_config(True, True, True)
 
