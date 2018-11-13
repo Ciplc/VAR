@@ -1,0 +1,8 @@
+Rasperry Pi data recorder needs:
+
+Time, Pressure, Temp from Pressure, Temp from Humidity, Humidity, AccelerometerRaw(x,y,z), GyroRaw(x,y,z), 
+CompassRaw(x,y,z), Orientation in Degrees(Pitch, Roll, Yaw), 
+
+Extra time:
+
+Trigger script by joystick

@@ -4,6 +4,7 @@
 from sense_emu import SenseHat
 import csv
 import time
+import datetime
 
 #initializing sensehat opject
 sense = SenseHat()
@@ -20,6 +21,7 @@ def get_enviro():
 	tempHumid = sense.get_temperature_from_humidity()
 	humidity = sense.get_humidity()
 
+	#format results into a 'csv'
 	enviro_results = [
 
 		pressure,
@@ -58,7 +60,7 @@ def get_IMU():
 	roll = orientationraw['roll']
 	yaw = orientationraw['yaw']
 
-        #format results into a 'csv'
+    #format results into a 'csv'
 	IMU_results = [
 
             accelx,
@@ -86,16 +88,25 @@ def get_data():
 	enviro_res = get_enviro()
 	IMU_res = get_IMU()
 
+	#Get datetime (accuracy unconfirmed)
+	time = datetime.datetime.now()
+
 	#put results into a single list
-	results = []
+
+	results = [
+
+		time,
+	]
+
 	results.extend(enviro_res)
 	results.extend(IMU_res)
-    	#open data.csv and output findings
+
+    #open data.csv and output findings
 	with open("data.csv", 'a') as f:
 
         #initializing csv writer object to write to f
-            writer = csv.writer(f)
-            writer.writerows([results])
+        writer = csv.writer(f)
+        writer.writerows([results])
 
 #loop to 20
 while(counter < 101):
