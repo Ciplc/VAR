@@ -7,7 +7,7 @@ import time
 
 #initializing sensehat opject
 sense = SenseHat()
-
+counter = 0
 #config IMU sensor https://pythonhosted.org/sense-hat/api/#imu-sensor
 sense.set_imu_config(True, True, True)
 
@@ -37,46 +37,48 @@ def get_IMU():
 	accelraw = sense.get_accelerometer_raw()
 
 	accelx = accelraw['x']	#change data into a friendlier format
-    accely = accelraw['y']	
-    accelz = accelraw['z']
+	accely = accelraw['y']
+	accelz = accelraw['z']
 
 	gyroraw = sense.get_gyroscope_raw()
 
 	gyrox = gyroraw['x']	#change data into a friendlier format
 	gyroy = gyroraw['y']
-    gyroz = gyroraw['z']
-
-    compassraw = sense.get_compass_raw()
-
-    compassx = compassraw['x']	#change data into a friendlier format
+	gyroz = gyroraw['z']
+	
+	compassraw = sense.get_compass_raw()
+	
+	compassx = compassraw['x']	#change data into a friendlier format
 	compassy = compassraw['y']
-    compassz = compassraw['z']
+	compassz = compassraw['z']
+	
+	orientationraw = sense.get_orientation_degrees()
+	
+	pitch = orientationraw['pitch']	#change data into a friendlier format
+	roll = orientationraw['roll']
+	yaw = orientationraw['yaw']
 
+        #format results into a 'csv'
+	IMU_results = [
 
-    orientationraw = sense.get_orientation_degrees()
+            accelx,
+            accely,
+            accelz,
+            gyrox,
+            gyroy,
+            gyroz,
+            compassx,
+            compassy,
+            compassz,
+            pitch,
+            roll,
+            yaw
 
-    pitch = orientationraw['p']	#change data into a friendlier format
-    roll = orientationraw['r']
-    yaw = orientationraw['y']
-
-    #format results into a 'csv'
-    IMU_results = [
-
-    	accelx,
-    	accely,
-    	accelz,
-    	gyrox,
-    	gyroy,
-    	gyroz,
-    	compassx,
-    	compassy,
-    	compassz,
-    	pitch,
-    	roll,
-    	yaw
-
-    ]
-
+        ]
+	
+	return(IMU_results)
+        
+        
 #get data from gatherer methods and write it
 def get_data():
 
@@ -88,16 +90,16 @@ def get_data():
 	results = []
 	results.extend(enviro_res)
 	results.extend(IMU_res)
-
-	#open data.csv and output findings
-    with open("data.csv", 'a') as f:
+    	#open data.csv and output findings
+	with open("data.csv", 'a') as f:
 
         #initializing csv writer object to write to f
-        writer = csv.writer(f)
-        writer.writerows([results])
+            writer = csv.writer(f)
+            writer.writerows([results])
 
-#loop infinetly
-while True:
-
+#loop to 20
+while(counter < 101):
+    
+    print(counter)
     get_data()
-    time.sleep(2)
+    counter = counter + 1
