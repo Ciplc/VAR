@@ -108,7 +108,7 @@ def get_data():
             writer = csv.writer(f)
             writer.writerows([results])
 
-#loop to 20
+#loop to 100
 while(counter < 101):
     
     print(counter)
