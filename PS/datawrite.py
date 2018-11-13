@@ -5,13 +5,11 @@ from sense_emu import SenseHat
 import csv
 import time
 import datetime
-import csvsetup
+import csvsetup as setup
 import sys
 
 #initializing sensehat opject
 sense = SenseHat()
-counter = 1
-setup = csvsetup()
 
 #config IMU sensor https://pythonhosted.org/sense-hat/api/#imu-sensor
 sense.set_imu_config(True, True, True)
@@ -87,18 +85,18 @@ def get_IMU():
 def csv_setup(argv):
 
 	if(argv == 'a'):
-
-		print("Append mode")
-		return("Complete")
+            print("1")
+            print("Append mode")
+            return("Complete")
 	elif(argv == 'n'):
-
-		print("New mode")
-		setup()
-		return("Complete")
+            print("2")
+            print("New mode")
+            setup()
+            return("Complete")
 	else:
-
-		print("No argument specified, running in append mode")
-		return("Complete")
+            print("3")
+            print("No argument specified, running in append mode")
+            return("Complete")
 
 
 
@@ -131,18 +129,18 @@ def get_data():
 
 
 def loop():
-
-	#loop to 100
-	while(counter < 101):
-
-	    print(counter)
-	    get_data()
-	    counter = counter + 1
+    
+    counter = 1
+    #loop to 100
+    while(counter < 101):
+        
+        print(counter)
+        get_data()
+        counter = counter + 1
 
 
 if __name__ == "__main__":
 
 	stat = csv_setup(sys.argv[1:])
-
 	if(stat == "Complete"):
 		loop()
