@@ -101,12 +101,12 @@ def get_data():
 	results.extend(enviro_res)
 	results.extend(IMU_res)
 
-    #open data.csv and output findings
+        #open data.csv and output findings
 	with open("data.csv", 'a') as f:
 
         #initializing csv writer object to write to f
-        writer = csv.writer(f)
-        writer.writerows([results])
+            writer = csv.writer(f)
+            writer.writerows([results])
 
 #loop to 20
 while(counter < 101):
