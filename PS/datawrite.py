@@ -84,17 +84,14 @@ def get_imu():
 # setup csv output file to include headers if new.
 def csv_setup(argv):
     if argv == 'a':
-        print("1")
         print("Append mode")
         return "Complete"
     elif argv == 'n':
-        print("2")
         print("New mode")
         setup.set()
         return "Complete"
     else:
-        print("3")
-        print("No argument specified, running in append mode")
+        print("No argument specified/Incorrect argument specified, running in append mode")
         return "Complete"
 
 
@@ -134,8 +131,11 @@ def loop():
         counter = counter + 1
 
 
+# Initialize script
 if __name__ == "__main__":
 
+    # If an arg is provided run it else run with arg foo to force append mode.
+    # If more than 1 arg is provided throw error and stop
     if len(sys.argv) == 2:
 
         stat = csv_setup(sys.argv[1])
@@ -144,8 +144,9 @@ if __name__ == "__main__":
 
     elif len(sys.argv) == 1:
 
-        stat = csv_setup("p")
+        stat = csv_setup("foo")
         if stat == "Complete":
             loop()
     else:
         print("Error command line arguments are limited to 1 or less")
+        exit(0)
