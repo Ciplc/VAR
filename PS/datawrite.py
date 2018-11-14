@@ -3,12 +3,11 @@
 # sense_hat is the non emulated -v
 from sense_emu import SenseHat
 import csv
-import time
 import datetime
 import csvsetup as setup
 import sys
 
-# initializing sensehat opject
+# initializing sensehat
 sense = SenseHat()
 
 # config IMU sensor https://pythonhosted.org/sense-hat/api/#imu-sensor
@@ -36,9 +35,7 @@ def get_enviro():
 
 
 # get IMU data from the sensehat
-
-
-def get_IMU():
+def get_imu():
     accelraw = sense.get_accelerometer_raw()
 
     accelx = accelraw['x']  # change data into a friendlier format
@@ -64,7 +61,7 @@ def get_IMU():
     yaw = orientationraw['yaw']
 
     # format results into a 'csv'
-    IMU_results = [
+    imu_results = [
 
         accelx,
         accely,
@@ -81,30 +78,31 @@ def get_IMU():
 
     ]
 
-    return (IMU_results)
+    return imu_results
 
 
+# setup csv output file to include headers if new.
 def csv_setup(argv):
-    if (argv == 'a'):
+    if argv == 'a':
         print("1")
         print("Append mode")
-        return ("Complete")
-    elif (argv == 'n'):
+        return "Complete"
+    elif argv == 'n':
         print("2")
         print("New mode")
         setup.set()
-        return ("Complete")
+        return "Complete"
     else:
         print("3")
         print("No argument specified, running in append mode")
-        return ("Complete")
+        return "Complete"
 
 
 # get data from gatherer methods and write it
 def get_data():
     # call gatherer methods
     enviro_res = get_enviro()
-    IMU_res = get_IMU()
+    imu_res = get_imu()
 
     # Get datetime (accuracy unconfirmed)
     time = datetime.datetime.now()
@@ -117,7 +115,7 @@ def get_data():
     ]
 
     results.extend(enviro_res)
-    results.extend(IMU_res)
+    results.extend(imu_res)
 
     # open data.csv and output findings
     with open("data.csv", 'a') as f:
@@ -126,10 +124,11 @@ def get_data():
         writer.writerows([results])
 
 
+# loop program to 100 entries
 def loop():
     counter = 1
     # loop to 100
-    while (counter < 101):
+    while counter < 101:
         print(counter)
         get_data()
         counter = counter + 1
@@ -137,6 +136,6 @@ def loop():
 
 if __name__ == "__main__":
 
-    stat = csv_setup(sys.argv[1:])
-    if (stat == "Complete"):
+    stat = csv_setup(sys.argv[1])
+    if stat == "Complete":
         loop()
