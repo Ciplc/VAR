@@ -1,4 +1,4 @@
-# Datawrite.py readme
+# Datawrite.py
 
 ## Command Line arguments
 
