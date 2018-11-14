@@ -136,6 +136,10 @@ def loop():
 
 if __name__ == "__main__":
 
-    stat = csv_setup(sys.argv[1])
+    try:
+        stat = csv_setup(sys.argv[1])
+    except():
+        print("excepting")
+
     if stat == "Complete":
         loop()
