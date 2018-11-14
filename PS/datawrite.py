@@ -136,11 +136,16 @@ def loop():
 
 if __name__ == "__main__":
 
-    if len(sys.argv) <= 2:
+    if len(sys.argv) == 2:
 
         stat = csv_setup(sys.argv[1])
         if stat == "Complete":
             loop()
 
+    elif len(sys.argv) == 1:
+
+        stat = csv_setup("p")
+        if stat == "Complete":
+            loop()
     else:
         print("Error command line arguments are limited to 1 or less")
