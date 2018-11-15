@@ -1,3 +1,5 @@
+# Developed by Henry Graham for VAR under the MIT license
+# Records data from the sense hat and outputs it a csv file.
 # importing sensehat, csv, and time
 # sense_emu is the sensehat -v for emulation on a RPI
 # sense_hat is the non emulated -v
@@ -88,7 +90,7 @@ def csv_setup(argv):
         return "Complete"
     elif argv == 'n':
         print("New mode")
-        setup.set()
+        setup.setheaders()
         return "Complete"
     else:
         print("No argument specified/Incorrect argument specified, running in append mode")
