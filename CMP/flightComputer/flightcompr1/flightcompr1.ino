@@ -47,10 +47,11 @@ void loop(){
 
     dataS = String(res1) + "," + String(res2) + "," + String(res3)
 
+    save(outfile)
 
 }
 
-void save(){
+void save(outFile){
 
     //if file is open, print
     if(outFile){
