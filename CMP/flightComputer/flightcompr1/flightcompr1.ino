@@ -41,11 +41,11 @@ void loop(){
     /*
     Record data here
     */
-
+   int res1, res2, res3 = 0;
    //Make file available
     File outFile = SD.open("log.csv", FILE_WRITE);
 
-    dataS = String(res1) + "," + String(res2) + "," + String(res3)
+    dataS = String(res1) + "," + String(res2) + "," + String(res3);
 
     //if file is open, print
     if(outFile){
