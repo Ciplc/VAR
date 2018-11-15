@@ -26,7 +26,7 @@ void setup(){
     //No errors proced
     Serial.println("Card init.")
 
-    //Init pinmodes here
+    //init pinmodes here
 }
 
 void loop(){
@@ -39,22 +39,23 @@ void loop(){
 
    //Make file available
    File outFile = SD.open("log.txt", FILE_WRITE);
-    /*
 
-    Check how to output to csv assuming similar method
+    dataS = String(res1) + "," + String(res2) + "," + String(res3)
 
-    */
+
+}
+
+void save(){
 
     //if file is open, print
-   if(outFile){
+    if(outFile){
         outFile.println(dataS);
         outFile.close();
         //Print to serial to log
         Serial.println(dataS);
     //Throw error if file error
-   }else{
-
-       Serial.println("error with file");
-
+    else{
+        Serial.println("error with file");
    }
+
 }
