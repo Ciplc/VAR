@@ -24,14 +24,14 @@ void setup(){
     Serial.print("Init. SD card");
 
     //If card isn't detected throw
-    if(!SD.begin(chipSelect)){
+    if(!SD.begin(CSpin)){
 
-        Serial.println("SD card not detected/failed")
+        Serial.println("SD card not detected/failed");
         while(1);
     }
 
     //No errors proced
-    Serial.println("Card init.")
+    Serial.println("Card init.");
 
     //init pinmodes here
 }
@@ -43,15 +43,9 @@ void loop(){
     */
 
    //Make file available
-   File outFile = SD.open("log.csv", FILE_WRITE);
+    File outFile = SD.open("log.csv", FILE_WRITE);
 
     dataS = String(res1) + "," + String(res2) + "," + String(res3)
-
-    save(outfile)
-
-}
-
-void save(outFile){
 
     //if file is open, print
     if(outFile){
@@ -60,8 +54,10 @@ void save(outFile){
         //Print to serial to log
         Serial.println(dataS);
     //Throw error if file error
-    else{
+    
+    }else{
         Serial.println("error with file");
    }
 
 }
+
