@@ -5,6 +5,13 @@
 #include <SPI.h>
 #include <SD.h>
 
+
+//Declare pins here
+const int CSpin = 10;
+//Blank string for writing with
+String dataS = "";
+
+
 void setup(){
 
     // Open Serial comms. 
@@ -31,8 +38,6 @@ void setup(){
 
 void loop(){
 
-    //Blank string for writing with
-    String dataS = "";
     /*
     Record data here
     */
