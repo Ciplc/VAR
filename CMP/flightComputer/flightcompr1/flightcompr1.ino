@@ -38,7 +38,7 @@ void loop(){
     */
 
    //Make file available
-   File outFile = SD.open("log.txt", FILE_WRITE);
+   File outFile = SD.open("log.csv", FILE_WRITE);
 
     dataS = String(res1) + "," + String(res2) + "," + String(res3)
 
