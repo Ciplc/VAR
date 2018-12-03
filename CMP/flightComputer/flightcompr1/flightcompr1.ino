@@ -41,8 +41,8 @@ void loop(){
     /*
     Record data here
     */
-   int res1, res2, res3 = 0;
-   //Make file available
+    int res1, res2, res3 = 0;
+    //Make file available
     File outFile = SD.open("log.csv", FILE_WRITE);
 
     dataS = String(res1) + "," + String(res2) + "," + String(res3);
@@ -54,7 +54,6 @@ void loop(){
         //Print to serial to log
         Serial.println(dataS);
     //Throw error if file error
-    
     }else{
         Serial.println("error with file");
    }
