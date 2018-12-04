@@ -123,6 +123,7 @@ def get_data():
         writer.writerows([results])
 
 
+# Modify once program is being used properly
 # loop program to 100 entries
 def loop():
     counter = 1
@@ -131,6 +132,7 @@ def loop():
         print(counter)
         get_data()
         counter = counter + 1
+    # TODO implement timing with RTC
 
 
 # Initialize script
