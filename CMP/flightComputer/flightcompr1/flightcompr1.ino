@@ -1,9 +1,10 @@
-/* Developed by <user> for VAR under the MIT license
+/* Developed by Henry G for VAR under the MIT license
 */
 
 //Include required libraries
 #include <SPI.h>
 #include <SD.h>
+#include <Servo.h>
 
 
 //Declare pins here
@@ -43,10 +44,11 @@ void loop(){
     */
     int res1, res2, res3 = 0;
     //Make file available
-    File outFile = SD.open("log.csv", FILE_WRITE);
+    //File outFile = SD.open("log.csv", FILE_WRITE);
 
     dataS = String(res1) + "," + String(res2) + "," + String(res3);
 
+    /*
     //if file is open, print
     if(outFile){
         outFile.println(dataS);
@@ -56,8 +58,30 @@ void loop(){
     //Throw error if file error
     }else{
         Serial.println("error with file");
-   }
+    }
+    */
 
+   //Output to log
+   output(dataS);
+
+}
+
+static output(String data){
+
+    //open file
+    File outFile = SD.open("log.csv", FILE_WRITE);
+    //if file is open, print
+    if(outFile){
+        //Output to file then close file
+        outFile.println(data);
+        outFile.close();
+        //Print to serial
+        Serial.println(data);
+    }
+    else{
+        //Pass error to serial
+        Serial.println("error with file");
+    }
 }
 
 void findInverse(){
