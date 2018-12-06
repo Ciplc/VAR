@@ -60,3 +60,14 @@ void loop(){
 
 }
 
+void findInverse(){
+
+    //TODO find inverse of a given point
+
+}
+
+void thrust(){
+
+    //TODO thrust
+
+}
