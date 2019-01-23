@@ -24,3 +24,5 @@ To commit to master you must verify your commits using GPG keys. Merging require
 **PS**   : Project Stratosphere
 
 **-v**   : Version
+
+**ASS**  : Acronyms Seriously Suck
