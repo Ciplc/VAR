@@ -9,6 +9,7 @@ import datetime
 import csvsetup as setup
 import sys
 import picamera
+import json
 
 # initializing sensehat
 sense = SenseHat()
@@ -138,10 +139,38 @@ def loop():
     # TODO implement timing with RTC
 
 
-# Start video recording
-def record():
+# Recording Stuff below
+# Read runs from json file
+def read_run():
+    with open('runnum.json') as f:
+        data = json.loads(f.read())
+    return data["runs"]
 
-    # TODO implement video recording to file. See https://picamera.readthedocs.io/en/release-1.13/recipes1.html#recording-over-multiple-files
+
+# Dump run number into json file
+def dump_run():
+
+    #  Read from the JSON file and add 1 to returned value
+    data = {'runs': read_run() + 1}
+    with open('runnum.json', 'w') as f:
+        json.dump(data, f)
+
+
+# Start video recording
+def start_recording():
+
+    # TODO finish implementing video recording to file.
+    #  See https://picamera.readthedocs.io/en/release-1.13/recipes1.html#recording-over-multiple-files
+
+    # filename = now + '.h264'
+    camera.start_recording('run_' + read_run() + '.h264')
+
+
+# Stop the recording and update runs
+def stop_recording():
+
+    camera.stop_recording()
+    dump_run()
 
 
 # Initialize script
@@ -165,5 +194,5 @@ if __name__ == "__main__":
         exit(0)
 
     # set camera resolution then start it up.
-    camera.resolution(1024, 768)
+    camera.resolution(1920, 1080)
     camera.start_preview()
