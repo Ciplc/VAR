@@ -8,9 +8,12 @@ import csv
 import datetime
 import csvsetup as setup
 import sys
+import picamera
 
 # initializing sensehat
 sense = SenseHat()
+# initialize camera
+camera = picamera.PiCamera()
 
 # config IMU sensor https://pythonhosted.org/sense-hat/api/#imu-sensor
 sense.set_imu_config(True, True, True)
@@ -135,6 +138,12 @@ def loop():
     # TODO implement timing with RTC
 
 
+# Start video recording
+def record():
+
+    # TODO implement video recording to file. See https://picamera.readthedocs.io/en/release-1.13/recipes1.html#recording-over-multiple-files
+
+
 # Initialize script
 if __name__ == "__main__":
 
@@ -154,3 +163,7 @@ if __name__ == "__main__":
     else:
         print("Error command line arguments are limited to 1 or less")
         exit(0)
+
+    # set camera resolution then start it up.
+    camera.resolution(1024, 768)
+    camera.start_preview()
