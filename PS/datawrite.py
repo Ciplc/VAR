@@ -4,9 +4,8 @@
 # sense_emu is the sensehat -v for emulation on a RPI
 # sense_hat is the non emulated -v
 from sense_emu import SenseHat
-import csv
 import datetime
-import csvsetup as setup
+from .csvsetup import setheaders as setup
 import sys
 import picamera
 import json
@@ -94,7 +93,7 @@ def csv_setup(argv):
         return "Complete"
     elif argv == 'n':
         print("New mode")
-        setup.setheaders()
+        setup()
         return "Complete"
     else:
         print("No argument specified/Incorrect argument specified, running in append mode")
@@ -139,7 +138,7 @@ def loop():
     # TODO implement timing with RTC
 
 
-# Recording Stuff below
+# Camera methods below
 # Read runs from json file
 def read_run():
     with open('runnum.json') as f:
@@ -147,7 +146,7 @@ def read_run():
     return data["runs"]
 
 
-# Dump run number into json file
+# Dump run number plus 1 into json file
 def dump_run():
 
     #  Read from the JSON file and add 1 to returned value
@@ -159,10 +158,6 @@ def dump_run():
 # Start video recording
 def start_recording():
 
-    # TODO finish implementing video recording to file.
-    #  See https://picamera.readthedocs.io/en/release-1.13/recipes1.html#recording-over-multiple-files
-
-    # filename = now + '.h264'
     camera.start_recording('run_' + read_run() + '.h264')
 
 
@@ -195,4 +190,5 @@ if __name__ == "__main__":
 
     # set camera resolution then start it up.
     camera.resolution(1920, 1080)
-    camera.start_preview()
+    start_recording()
+
