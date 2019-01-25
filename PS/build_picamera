@@ -1,0 +1,9 @@
+There are difficulties installing picamera as of 1/25/19
+To install you need:
+1. Clone the git repo https://github.com/waveform80/picamera
+2. cd into the top level dir
+3. run 'pip wheel .'
+4. run 'python setup.py bdist_wheel'
+
+At this point you have built the wheel and can then install with the following
+'pip install ./dist/wheel_name.whl' where wheel_name is the name of the wheel file that was built

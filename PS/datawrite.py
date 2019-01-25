@@ -4,13 +4,16 @@
 # sense_emu is the sensehat -v for emulation on a RPI
 # sense_hat is the non emulated -v
 from sense_emu import SenseHat
-import csv
 import datetime
-import csvsetup as setup
+from .csvsetup import setheaders as setup
 import sys
+import picamera
+import json
 
 # initializing sensehat
 sense = SenseHat()
+# initialize camera
+camera = picamera.PiCamera()
 
 # config IMU sensor https://pythonhosted.org/sense-hat/api/#imu-sensor
 sense.set_imu_config(True, True, True)
@@ -90,7 +93,7 @@ def csv_setup(argv):
         return "Complete"
     elif argv == 'n':
         print("New mode")
-        setup.setheaders()
+        setup()
         return "Complete"
     else:
         print("No argument specified/Incorrect argument specified, running in append mode")
@@ -135,6 +138,36 @@ def loop():
     # TODO implement timing with RTC
 
 
+# Camera methods below
+# Read runs from json file
+def read_run():
+    with open('runnum.json') as f:
+        data = json.loads(f.read())
+    return data["runs"]
+
+
+# Dump run number plus 1 into json file
+def dump_run():
+
+    #  Read from the JSON file and add 1 to returned value
+    data = {'runs': read_run() + 1}
+    with open('runnum.json', 'w') as f:
+        json.dump(data, f)
+
+
+# Start video recording
+def start_recording():
+
+    camera.start_recording('run_' + read_run() + '.h264')
+
+
+# Stop the recording and update runs
+def stop_recording():
+
+    camera.stop_recording()
+    dump_run()
+
+
 # Initialize script
 if __name__ == "__main__":
 
@@ -154,3 +187,8 @@ if __name__ == "__main__":
     else:
         print("Error command line arguments are limited to 1 or less")
         exit(0)
+
+    # set camera resolution then start it up.
+    camera.resolution(1920, 1080)
+    start_recording()
+
