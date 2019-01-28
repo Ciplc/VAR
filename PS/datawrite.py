@@ -1,6 +1,6 @@
-# Developed by Henry Graham for VAR under the MIT license
+# Developed by Henry G for VAR under the MIT license
 # Records data from the sense hat and outputs it a csv file.
-# importing sensehat, csv, and time
+# Also records from a camera
 # sense_emu is the sensehat -v for emulation on a RPI
 # sense_hat is the non emulated -v
 from sense_emu import SenseHat
@@ -158,6 +158,7 @@ def dump_run():
         json.dump(data, f)
 
 
+# Testing to see if a file has been created which would trigger a stop
 def stop_test():
 
     for file in os.listdir("./"):
