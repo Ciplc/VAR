@@ -9,7 +9,8 @@ from .csvsetup import setheaders as setup
 import sys
 import picamera
 import json
-import csv 
+import csv
+import os
 
 # initializing sensehat
 sense = SenseHat()
@@ -136,6 +137,7 @@ def loop():
         print(counter)
         get_data()
         counter = counter + 1
+        stop_test()
     # TODO implement timing with RTC
 
 
@@ -154,6 +156,13 @@ def dump_run():
     data = {'runs': read_run() + 1}
     with open('runnum.json', 'w') as f:
         json.dump(data, f)
+
+
+def stop_test():
+
+    for file in os.listdir("./"):
+        if file.endswith(".varstp"):
+            stop_recording()
 
 
 # Start video recording
