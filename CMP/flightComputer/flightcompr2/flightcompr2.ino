@@ -42,24 +42,11 @@ void loop(){
     /*
     Record data here
     */
-    int res1, res2, res3 = 0;
+    double res1, res2, res3 = 0;
     //Make file available
     //File outFile = SD.open("log.csv", FILE_WRITE);
 
-    dataS = String(res1) + "," + String(res2) + "," + String(res3);
-
-    /*
-    //if file is open, print
-    if(outFile){
-        outFile.println(dataS);
-        outFile.close();
-        //Print to serial to log
-        Serial.println(dataS);
-    //Throw error if file error
-    }else{
-        Serial.println("error with file");
-    }
-    */
+    dataS = String(res1) + "-" + String(res2) + "-" + String(res3);
 
    //Output to log
    output(dataS);
@@ -84,9 +71,23 @@ static output(String data){
     }
 }
 
-void findInverse(){
+void findInversePoint(double x, double y, double z){
 
     //TODO find inverse of a given point
+    //Antipodal point, negate all input values or vice versa
+    double num [2] = {x, y, z};
+    for(a = 0; a > 3; a++){
+        if(num[a] + (num[a] * -1) = 0){
+
+        }
+        if(num[a] - num[a] = 0){
+
+        }
+        else{
+            Serial.println("error with data")
+        }
+    }
+    
 
 }
 
