@@ -15,7 +15,7 @@ import os
 class CSVSetup:
 
     def setheaders(self):
-
+        """Sets headers for data.csv if a new file is to be used"""
         headers = [
             'Time', 'Pressure', 'Temperature from Pressure',
             'Temperature from Humidity', 'Humidity',
@@ -40,10 +40,13 @@ class DataWrite:
         self.sense.set_imu_config(True, True, True)
 
     def get_data(self):
-
+        """Gets data from environmental sensors and IMU sensors and formats it for writing to a CSV"""
         # get environmental data from the sensehat
         def get_enviro():
+            """Gets environmental data and formats it in the form:
 
+            pressure, temperature_pressure, temperature_humidity, humidity
+            """
             pressure = self.sense.get_pressure()
             temp_press = self.sense.get_temperature_from_pressure()
             temp_humid = self.sense.get_temperature_from_humidity()
@@ -58,7 +61,11 @@ class DataWrite:
 
         # get IMU data from the sensehat
         def get_imu():
+            """Gets IMU data and formats it in the form:
 
+            accelX, accelY, accelZ, gyroX, gyroY, gyroZ, compassX, compassY, compassZ, orientationX, orientationY,
+            orientationZ
+            """
             # get raw data from IMU sensors
             accelraw = self.sense.get_accelerometer_raw()
             gyroraw = self.sense.get_gyroscope_raw()
