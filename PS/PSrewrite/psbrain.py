@@ -149,18 +149,21 @@ def main():
     camera = Camera()
     csvsetup = CSVSetup()
 
-    # If the arg in place two is n set headers up
-    if sys.argv[2] == 'n':
-        stat = csvsetup.setheaders()
-        if stat == "Complete":
+    # If the arg in place two is -n set headers up
+    try:
+        if sys.argv[2] == 'n':
+            stat = csvsetup.setheaders()
+            if stat == "Complete":
+                # TODO implement RTC loop
+                pass
+        elif sys.argv[2] == 'a':  # If arg in place two is -a just append
             # TODO implement RTC loop
             pass
-    elif sys.argv[2] == 'a':  # If arg in place two is a just append
-        # TODO implement RTC loop
-        pass
-    else:  # If neither n nor a is set fail out
-        print("Error command line arguments are limited to a or n")
-        exit(0)
+        else:  # If neither n nor a is set fail out
+            print("Error command line arguments are limited to a or n")
+            exit(0)
+    finally:
+        exit(1)
 
     # Set camera resolution and start recording
     camera.camera.resolution(1920, 1080)
