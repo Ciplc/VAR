@@ -15,7 +15,8 @@ import os
 # Replacement for csvsetup.py, sets headers for a new .csv file
 class CSVSetup:
 
-    def setheaders(self):
+    @staticmethod
+    def setheaders():
         """Sets headers for data.csv if a new file is to be used"""
         headers = [
             'Time', 'Pressure', 'Temperature from Pressure',
@@ -114,7 +115,8 @@ class Camera:
     def __init__(self):
         self.camera = picamera.PiCamera()
 
-    def read_run(self):
+    @staticmethod
+    def read_run():
         """Reads the number of runs from runnum.json in order to have file extensions in an ordered fashion"""
         with open('runnum.json') as f:
             data = json.loads(f.read())
