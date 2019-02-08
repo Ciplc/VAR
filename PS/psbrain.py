@@ -10,6 +10,7 @@ import picamera
 import json
 import csv
 import os
+import time
 
 
 # Sets headers for a new .csv file
@@ -175,6 +176,15 @@ def main():
     # Set camera resolution and start recording
     camera.camera.resolution(1920, 1080)
     camera.start_recording()
+    loop()
+
+
+def loop():
+
+    data = DataWrite
+    while True:
+        time.sleep(120)
+        data.write_data()
 
 
 if __name__ == '__main__':
