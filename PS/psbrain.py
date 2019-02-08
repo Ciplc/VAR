@@ -145,6 +145,11 @@ class Camera:
         self.dump_run()
 
 
+class CommandLineArgsInvalid:
+    """Raised when there are too many or not enough command line args"""
+    pass
+
+
 def main():
 
     # Defining objects to work with
@@ -162,10 +167,10 @@ def main():
             # TODO implement RTC loop
             pass
         else:  # If neither n nor a is set fail out
-            print("Error command line arguments are limited to a or n")
-            exit(0)
-    finally:
-        exit(1)
+            raise CommandLineArgsInvalid
+    except CommandLineArgsInvalid:
+        print("Error command line arguments are limited to a or n only")
+        exit(0)
 
     # Set camera resolution and start recording
     camera.camera.resolution(1920, 1080)
