@@ -12,7 +12,7 @@ import csv
 import os
 
 
-# Replacement for csvsetup.py, sets headers for a new .csv file
+# Sets headers for a new .csv file
 class CSVSetup:
 
     @staticmethod
