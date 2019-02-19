@@ -96,8 +96,8 @@ class DataWrite:
         # Get data from sensors and add time then append together
         enviro_res = get_enviro()
         imu_res = get_imu()
-        time = datetime.datetime.now()
-        results = [time, ]
+        current_time = datetime.datetime.now()
+        results = [current_time, ]
         results.extend(enviro_res)
         results.extend(imu_res)
 
@@ -181,7 +181,7 @@ def main():
 
 def loop():
 
-    data = DataWrite
+    data = DataWrite()
     while True:
         time.sleep(120)
         data.write_data()
