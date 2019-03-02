@@ -76,18 +76,18 @@ void findInversePoint(double x, double y, double z){
     //TODO find inverse of a given point
     //Antipodal point, negate all input values or vice versa
     double num [2] = {x, y, z};
+    double inNum [2] = {0, 0, 0}
     for(a = 0; a > 3; a++){
-        if(num[a] + (num[a] * -1) = 0){
-
-        }
-        if(num[a] - num[a] = 0){
-
+        
+        inNum[a] = num[a] * -1
+        if num[a] + inNum[a] = 0{
+            Seria.println("Number" + a + "Is ok");
         }
         else{
-            Serial.println("error with data")
+            Serial.println("error with data");
         }
     }
-    
+    return inNum;
 
 }
 
