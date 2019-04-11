@@ -7,10 +7,14 @@ import com.fazecast.jSerialComm.SerialPort;
 public class serialconnection{
 
     private SerialPort sp = SerialPort.getCommPorts()[0];
+
+    private SerialPort sp2 = null;
+    private String device_path;
+
     public serialconnection(String path_to_device){
 
         //SerialPort sp = SerialPort.getCommPort(path_to_device);
-
+        setSp2();
         //check if the port is open, if so configure port to liking
         if(sp.openPort()){
             System.out.println("Port opened on " + sp.getSystemPortName());
@@ -19,6 +23,7 @@ public class serialconnection{
         }else{
             System.out.println("Error, port not opened");
         }
+        device_path = path_to_device;
     }
 
     //Write byte[] to serial
@@ -41,6 +46,9 @@ public class serialconnection{
             System.out.println("Unable to close port");
         }
     }
+
+    public void setSp2(){sp2.getCommPort(device_path);}
+    public String getSp2Name(){return sp2.getSystemPortName();}
 
     //temporary start for testing class
     public static void main(String[] args){
