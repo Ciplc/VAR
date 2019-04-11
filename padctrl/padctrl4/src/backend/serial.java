@@ -24,11 +24,11 @@ public class serial {
 
     private void get_ports(){
 
-        SerialPort[] cp = SerialPort.getCommPorts();
+        SerialPort cp[] = SerialPort.getCommPorts();
 
-        for(int i=0; i<=cp.length; i++){
+        for(SerialPort port : cp){
+            System.out.println(port.getSystemPortName());
 
-            System.out.println(cp[1]);
         }
     }
 
@@ -60,7 +60,7 @@ public class serial {
     public static void main(String[] args){
         serial s = new serial();
         //s.serial_open();
-        //s.get_ports();
-        s.port_test();
+        s.get_ports();
+        //s.port_test();
     }
 }
