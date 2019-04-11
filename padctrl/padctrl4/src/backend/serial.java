@@ -11,6 +11,7 @@ public class serial {
     //Don't really need this but we can keep it here as a placeholder for when we do need it
     private serial(){
         String toWrite;
+        String path_to_device;
     }
 
     //Bunk method, doesn't work, should work
