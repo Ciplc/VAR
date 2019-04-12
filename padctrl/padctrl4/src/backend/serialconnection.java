@@ -8,22 +8,16 @@ public class serialconnection{
 
     private SerialPort sp = SerialPort.getCommPorts()[0];
 
-    private SerialPort sp2 = null;
+    private SerialPort sp2;
     private String device_path;
 
     public serialconnection(String path_to_device){
 
-        //SerialPort sp = SerialPort.getCommPort(path_to_device);
-        setSp2();
-        //check if the port is open, if so configure port to liking
-        if(sp.openPort()){
-            System.out.println("Port opened on " + sp.getSystemPortName());
-            sp.setComPortParameters(9600, 8, 1,0);
-            sp.setComPortTimeouts(SerialPort.TIMEOUT_WRITE_BLOCKING, 0, 0);
-        }else{
-            System.out.println("Error, port not opened");
-        }
         device_path = path_to_device;
+        setSp2();
+
+        //open_port(sp);
+        open_port(sp2);
     }
 
     //Write byte[] to serial
@@ -50,10 +44,21 @@ public class serialconnection{
     public void setSp2(){sp2.getCommPort(device_path);}
     public String getSp2Name(){return sp2.getSystemPortName();}
 
+    //check if the specified port is open, if so configure port to liking
+    public void open_port(SerialPort port){
+
+        if(port.openPort()){
+            System.out.println("Port opened on " + port.getSystemPortName());
+            port.setComPortParameters(9600, 8, 1,0);
+            port.setComPortTimeouts(SerialPort.TIMEOUT_WRITE_BLOCKING, 0, 0);
+        }else{
+            System.out.println("Error, port not opened");
+        }
+    }
     //temporary start for testing class
     public static void main(String[] args){
         Integer test = 11;
-        serialconnection s = new serialconnection("/dev/tty50");
+        serialconnection s = new serialconnection("/dev/cu.MALS");
         s.serial_write(test);
         s.close_port();
     }
