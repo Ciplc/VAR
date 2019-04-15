@@ -35,7 +35,6 @@ public class serialconnection{
         } catch(Exception IOException){
             System.out.println("Exception in IOException");
         }
-
     }
 
     //Close port after use
@@ -48,7 +47,9 @@ public class serialconnection{
     }
 
     public void setSp2(){sp2.getCommPort(device_path);}
-    public String getSp2Name(){return sp2.getSystemPortName();}
+    public String getSp2Name(){
+        return sp2.getSystemPortName();
+    }
 
     //temporary start for testing class
     public static void main(String[] args){
