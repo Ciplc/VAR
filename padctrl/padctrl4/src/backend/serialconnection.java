@@ -40,7 +40,10 @@ public class serialconnection{
         }
     }
 
-    public void setSp2(){sp2.getCommPort(device_path);}
+    public void setSp2(){
+        sp2.getCommPort(device_path);
+    }
+
     public String getSp2Name(){
         return sp2.getSystemPortName();
     }
