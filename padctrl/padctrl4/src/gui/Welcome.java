@@ -13,7 +13,7 @@ public class Welcome extends JFrame implements ActionListener
 {
     //Constants
     
-    private final Color BACKGROUND_COLOR = new Color(0,200,0);
+    private final Color BACKGROUND_COLOR = new Color(0,0,200);
     private final Font DEFAULT_FONT = new Font("Calibri",Font.PLAIN,20);
 
     //Object declaration
@@ -40,13 +40,13 @@ public class Welcome extends JFrame implements ActionListener
         
         //Formatting and constructing welcomeLabel
         
-        welcomeLabel = new JLabel("");
+        welcomeLabel = new JLabel("placeholder",SwingConstants.CENTER);
         welcomeLabel.setFont(DEFAULT_FONT);
         welcomeLabel.setForeground(Color.WHITE);
         
         //Formatting and constructing descriptionLabel
         
-        descriptionLabel = new JLabel("");
+        descriptionLabel = new JLabel("placeholder",SwingConstants.CENTER);
         descriptionLabel.setFont(DEFAULT_FONT);
         descriptionLabel.setForeground(Color.WHITE);
         
@@ -74,14 +74,20 @@ public class Welcome extends JFrame implements ActionListener
         buttonPanel = new JPanel(new FlowLayout());
         buttonPanel.setBackground(BACKGROUND_COLOR);
         
+        buttonPanel.add(loginButton);
+        buttonPanel.add(exitButton);
+        
         //Add to frame
         
+        this.add(descriptionPanel,BorderLayout.NORTH);
+        this.add(buttonPanel,BorderLayout.SOUTH);
         
+        this.setVisible(true);
     }
     
     public static void main(String[] args) 
     {
-        
+        Welcome welcomeObject = new Welcome();
     }
 
     @Override
