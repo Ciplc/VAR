@@ -4,10 +4,10 @@ Class for the welcome frame of Pad Control application
  */
 package gui;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.*;
 
 public class Welcome extends JFrame implements ActionListener
 {

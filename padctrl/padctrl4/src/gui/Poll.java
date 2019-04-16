@@ -9,12 +9,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import backend.poll;
 
-public class Poll extends JFrame implements ActionListener {
-
-    //Style Consts
-    private final Color BACKGROUND_COLOR = new Color(0,200,0);
-    private final Font DEFAULT_FONT = new Font("Calibri",Font.PLAIN,20);
-
+public class Poll extends Template implements ActionListener {
 
     //Declaration of buttons for poll
     private JButton payloadButton = new JButton("Payload Ready?");
@@ -25,12 +20,8 @@ public class Poll extends JFrame implements ActionListener {
 
     public Poll(){
 
-        //Formatting
-        super("Launch Poll");
-        this.setBounds(100,50,900,400);
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.setBackground(BACKGROUND_COLOR);
-        this.setLayout(new GridBagLayout());
+        //Setting Title
+        this.setTitle("Launch Poll");
 
         //Adding Action Listeners
         payloadButton.addActionListener(this);
@@ -39,13 +30,12 @@ public class Poll extends JFrame implements ActionListener {
 
     }
 
-    public static void main(String[] Arg){
+    public static void main(String[] args){
 
     }
 
     @Override
     public void actionPerformed(ActionEvent e){
 
-        
     }
 }
