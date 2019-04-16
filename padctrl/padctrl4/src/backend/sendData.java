@@ -3,15 +3,16 @@ package backend;
 Developed by Henry G for VAR. Handles button presses from frames then sends the corresponding message to the arduino
  */
 
-public class sendData {
+public class sendData{
 
-    private serialconnection serialConn = new serialconnection("/dev/tty50");
+    private String device;
 
-    public sendData(){
-
-
+    public sendData(String serial_device){
+        device = serial_device;
+       // serialconnection serialConn = new serialconnection(serial_device);
     }
 
+    private serialconnection serialConn = new serialconnection(device);
     //Sends launch signal to arduino
     public void launch(){
         Integer message = 1;
