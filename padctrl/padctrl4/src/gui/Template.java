@@ -73,10 +73,12 @@ public class Template extends JFrame implements ActionListener {
         this.setVisible(true);
     }
     
-    public static void main(String[] args) {
-        
-        Template testObject = new Template();
-    }
+    //For testing purposes only
+    
+//    public static void main(String[] args) {
+//        
+//        Template testObject = new Template();
+//    }
     
     @Override
     public void actionPerformed(ActionEvent e) {
