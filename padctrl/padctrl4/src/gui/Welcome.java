@@ -2,7 +2,7 @@
 4/15/2019
 Class for the welcome frame of Pad Control application
  */
-package padctrlgui;
+package gui;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
