@@ -20,9 +20,9 @@ public class Poll extends Template implements ActionListener {
             SwingConstants.RIGHT);
     private JLabel guidanceLabel = new JLabel("Guidance Engineer: ", 
             SwingConstants.RIGHT);
-    private JLabel rangeLabel = new JLabel("Range Safety: ",
+    private JLabel rangeLabel = new JLabel("Range Safety Officer: ",
             SwingConstants.RIGHT);
-    private JLabel flightLabel = new JLabel("Flight: ",
+    private JLabel flightLabel = new JLabel("Flight Director: ",
             SwingConstants.RIGHT);
 
     //Declaration of radio buttons for polling
@@ -52,28 +52,33 @@ public class Poll extends Template implements ActionListener {
     
     private JPanel boosterPanel = new JPanel(new BorderLayout());
     private JPanel guidancePanel = new JPanel(new BorderLayout());
-    private JPanel rangeSafetyPanel = new JPanel(new BorderLayout());
-    private JPanel flightDirectorPanel = new JPanel(new BorderLayout());
+    private JPanel rangePanel = new JPanel(new BorderLayout());
+    private JPanel flightPanel = new JPanel(new BorderLayout());
     private JPanel pollingBoosterPanel = new JPanel(new BorderLayout());
     private JPanel pollingGuidancePanel = new JPanel(new BorderLayout());
+    private JPanel pollingRangePanel = new JPanel(new BorderLayout());
+    private JPanel pollingFlightPanel = new JPanel(new BorderLayout());
     private JPanel cmpPanel = new JPanel(new BorderLayout());
     private JPanel standardPanel = new JPanel(new BorderLayout());
     
     
     public Poll() {
 
-        //Setting Title
+        //Formatting frame
         
         this.setTitle("Launch Poll");
+        this.setBounds(100,50,700,160);
         
         //Formatting labels
         
         boosterLabel.setFont(DEFAULT_FONT);
         guidanceLabel.setFont(DEFAULT_FONT);
         rangeLabel.setFont(DEFAULT_FONT);
+        flightLabel.setFont(DEFAULT_FONT);
         boosterLabel.setForeground(Color.WHITE);
         guidanceLabel.setForeground(Color.WHITE);
         rangeLabel.setForeground(Color.WHITE);      
+        flightLabel.setForeground(Color.WHITE);     
         
         //Formatting buttons
             
@@ -95,38 +100,104 @@ public class Poll extends Template implements ActionListener {
         
         awaitingBoosterButton.setForeground(Color.WHITE);
         goBoosterButton.setForeground(Color.WHITE); 
-        noGoBoosterButton.setForeground(Color.WHITE);     
+        noGoBoosterButton.setForeground(Color.WHITE);    
         
-        //Adding to pollingGroup
+        awaitingGuidanceButton.setForeground(Color.WHITE);
+        goGuidanceButton.setForeground(Color.WHITE); 
+        noGoGuidanceButton.setForeground(Color.WHITE);
+        
+        awaitingRangeButton.setForeground(Color.WHITE);
+        goRangeButton.setForeground(Color.WHITE); 
+        noGoRangeButton.setForeground(Color.WHITE);
+        
+        awaitingFlightButton.setForeground(Color.WHITE);
+        goFlightButton.setForeground(Color.WHITE); 
+        noGoFlightButton.setForeground(Color.WHITE);
+        
+        //Adding to pollingGroups
         
         pollingBoosterGroup.add(awaitingBoosterButton);
         pollingBoosterGroup.add(goBoosterButton);
         pollingBoosterGroup.add(noGoBoosterButton);
         
-        //Formatting and Adding to pollingBoosterPanel
+        pollingGuidanceGroup.add(awaitingGuidanceButton);
+        pollingGuidanceGroup.add(goGuidanceButton);
+        pollingGuidanceGroup.add(noGoGuidanceButton);
+        
+        pollingRangeGroup.add(awaitingRangeButton);
+        pollingRangeGroup.add(goRangeButton);
+        pollingRangeGroup.add(noGoRangeButton);
+        
+        pollingFlightGroup.add(awaitingFlightButton);
+        pollingFlightGroup.add(goFlightButton);
+        pollingFlightGroup.add(noGoFlightButton);
+        
+        //Formatting and Adding to pollingPanels
         
         pollingBoosterPanel.setBackground(BACKGROUND_COLOR);
+        pollingGuidancePanel.setBackground(BACKGROUND_COLOR);
+        pollingRangePanel.setBackground(BACKGROUND_COLOR);
+        pollingFlightPanel.setBackground(BACKGROUND_COLOR);
         
         pollingBoosterPanel.add(awaitingBoosterButton,BorderLayout.WEST);
         pollingBoosterPanel.add(goBoosterButton,BorderLayout.CENTER);
         pollingBoosterPanel.add(noGoBoosterButton,BorderLayout.EAST);
         
-        //Formatting and Adding to boosterPanel
+        pollingGuidancePanel.add(awaitingGuidanceButton,BorderLayout.WEST);
+        pollingGuidancePanel.add(goGuidanceButton,BorderLayout.CENTER);
+        pollingGuidancePanel.add(noGoGuidanceButton,BorderLayout.EAST);
+        
+        pollingRangePanel.add(awaitingRangeButton,BorderLayout.WEST);
+        pollingRangePanel.add(goRangeButton,BorderLayout.CENTER);
+        pollingRangePanel.add(noGoRangeButton,BorderLayout.EAST);
+        
+        pollingFlightPanel.add(awaitingFlightButton,BorderLayout.WEST);
+        pollingFlightPanel.add(goFlightButton,BorderLayout.CENTER);
+        pollingFlightPanel.add(noGoFlightButton,BorderLayout.EAST);
+        
+        //Formatting and Adding to rolePanels
         
         boosterPanel.setBackground(BACKGROUND_COLOR);
+        guidancePanel.setBackground(BACKGROUND_COLOR);
+        rangePanel.setBackground(BACKGROUND_COLOR);
+        flightPanel.setBackground(BACKGROUND_COLOR);
         
         boosterPanel.add(boosterLabel,BorderLayout.WEST);
         boosterPanel.add(pollingBoosterPanel,BorderLayout.EAST);
+        
+        guidancePanel.add(guidanceLabel,BorderLayout.WEST);
+        guidancePanel.add(pollingGuidancePanel,BorderLayout.EAST);
+        
+        rangePanel.add(rangeLabel,BorderLayout.WEST);
+        rangePanel.add(pollingRangePanel,BorderLayout.EAST);
+        
+        flightPanel.add(flightLabel,BorderLayout.WEST);
+        flightPanel.add(pollingFlightPanel,BorderLayout.EAST);
         
         //Formatting and Adding to standardPanel
         
         standardPanel.setBackground(BACKGROUND_COLOR);
         
         standardPanel.add(boosterPanel,BorderLayout.NORTH);
+        standardPanel.add(rangePanel,BorderLayout.CENTER);
+        standardPanel.add(flightPanel,BorderLayout.SOUTH);
+        
+        //Formatting and Adding to cmpPanel
+        
+        cmpPanel.setBackground(BACKGROUND_COLOR);
+        
+        cmpPanel.add(guidancePanel,BorderLayout.NORTH);
+        
+        //Adding and Removing from buttonPanels
+        
+        navigationButtonPanel.remove(nextButton);
+        buttonPanel.add(proceedButton,BorderLayout.WEST);
         
         //Adding to frame
         
+        this.add(cmpPanel,BorderLayout.NORTH);
         this.add(standardPanel,BorderLayout.CENTER);
+        
         
         this.setVisible(true);
 
@@ -147,7 +218,7 @@ public class Poll extends Template implements ActionListener {
         if (command.equals("Next")) {
             
         }
-        else if (command.equals("Return")) {
+        if (command.equals("Return")) {
             
             this.dispose();
         }
