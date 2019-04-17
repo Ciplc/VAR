@@ -6,13 +6,13 @@ Developed by Henry G for VAR. Handles button presses from frames then sends the 
 public class sendData{
 
     private String device;
+    private serialconnection serialConn;
 
     public sendData(String serial_device){
         device = serial_device;
-       // serialconnection serialConn = new serialconnection(serial_device);
+        setSerialConn();
     }
 
-    private serialconnection serialConn = new serialconnection(device);
     //Sends launch signal to arduino
     public void launch(){
         Integer message = 1;
@@ -29,5 +29,19 @@ public class sendData{
     public void testContinuity(){
         Integer message = 3;
         serialConn.serial_write(message);
+    }
+
+    //Set up the serial connection for writing
+    private void setSerialConn(){
+        serialConn = new serialconnection(device);
+    }
+
+    //Close port and end
+    public void close(){
+        serialConn.close_port();
+    }
+
+    public static void main(String[] args){
+        sendData sD = new sendData("/dev/tty50");
     }
 }
