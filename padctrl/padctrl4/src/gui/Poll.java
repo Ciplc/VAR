@@ -198,17 +198,15 @@ public class Poll extends Template implements ActionListener {
         this.add(cmpPanel,BorderLayout.NORTH);
         this.add(standardPanel,BorderLayout.CENTER);
         
-        
         this.setVisible(true);
-
     }
 
     //For testing purposes only
     
-    public static void main(String[] args) {
-        
-        Poll testObject = new Poll();
-    }
+//    public static void main(String[] args) {
+//        
+//        Poll testObject = new Poll();
+//    }
 
     @Override
     public void actionPerformed(ActionEvent e) {

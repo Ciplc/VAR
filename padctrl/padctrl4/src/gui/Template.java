@@ -24,7 +24,7 @@ public class Template extends JFrame implements ActionListener {
     public JPanel navigationButtonPanel;
     public JPanel buttonPanel;
     
-    public Template(){
+    public Template() {
 
         //Formatting
         
