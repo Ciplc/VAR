@@ -13,8 +13,6 @@ public class Welcome extends Template implements ActionListener {
     
     //Constants
     
-    private final Color BACKGROUND_COLOR = new Color(95,95,95);
-    private final Font DEFAULT_FONT = new Font("Trebuchet MS",Font.PLAIN|Font.BOLD,20);
     private final java.net.URL LOGO_IMAGE = getClass().getResource("VAR.png");
     private final ImageIcon VAR_LOGO = new ImageIcon(new ImageIcon(LOGO_IMAGE).getImage(
         ).getScaledInstance(223,224,Image.SCALE_DEFAULT));
@@ -25,10 +23,6 @@ public class Welcome extends Template implements ActionListener {
     private JLabel instructionLabel;
     private JLabel instructionContLabel;
     private JLabel imageLabel;
-    private JButton loginButton;
-    private JButton exitButton;
-    private JPanel descriptionPanel;
-    private JPanel buttonPanel;
     
     //Constructor
     
@@ -65,35 +59,16 @@ public class Welcome extends Template implements ActionListener {
         imageLabel = new JLabel(VAR_LOGO);
         imageLabel.setBackground(BACKGROUND_COLOR);
         
-        //Constructing buttons
+        //Adding to textPanel
         
-        loginButton = new JButton("Login");
-        exitButton = new JButton("Exit Application");
-        loginButton.addActionListener(this);
-        exitButton.addActionListener(this);
-        
-        //Constructing and formatting descriptionPanel
-        
-        descriptionPanel = new JPanel(new BorderLayout());
-        descriptionPanel.setBackground(BACKGROUND_COLOR);
-        
-        descriptionPanel.add(welcomeLabel,BorderLayout.NORTH);
-        descriptionPanel.add(instructionLabel,BorderLayout.CENTER);
-        descriptionPanel.add(instructionContLabel,BorderLayout.SOUTH);
-        
-        //Constructing and formatting buttonPanel
-        
-        buttonPanel = new JPanel(new FlowLayout());
-        buttonPanel.setBackground(BACKGROUND_COLOR);
-        
-        buttonPanel.add(loginButton);
-        buttonPanel.add(exitButton);
+        textPanel.add(welcomeLabel,BorderLayout.NORTH);
+        textPanel.add(instructionLabel,BorderLayout.CENTER);
+        textPanel.add(instructionContLabel,BorderLayout.SOUTH);
         
         //Add to frame
         
-        this.add(descriptionPanel,BorderLayout.NORTH);
+        this.add(textPanel,BorderLayout.NORTH);
         this.add(imageLabel,BorderLayout.CENTER);
-        this.add(buttonPanel,BorderLayout.SOUTH);
         
         this.setVisible(true);
     }
@@ -108,13 +83,17 @@ public class Welcome extends Template implements ActionListener {
         
         String command = e.getActionCommand();
         
-        if (command.equals("Login")) {
+        if (command.equals("Next")) {
             
-        }   
+        }
+        if (command.equals("Return")) {
+            
+            this.dispose();
+        }
         else if (command.equals("Exit Application")) {
             
             System.exit(0);
-        }    
+        }
     }
     
 }
