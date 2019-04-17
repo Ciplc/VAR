@@ -9,7 +9,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Welcome extends JFrame implements ActionListener {
+public class Welcome extends Template implements ActionListener {
     
     //Constants
     
@@ -36,7 +36,7 @@ public class Welcome extends JFrame implements ActionListener {
         
         //Formatting frame
         
-        super("VAR Pad Controller");
+        this.setTitle("VAR Pad Controller");
         this.setBounds(100,50,600,400);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.getContentPane().setBackground(BACKGROUND_COLOR);
