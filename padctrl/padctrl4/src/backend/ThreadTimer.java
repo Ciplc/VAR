@@ -6,37 +6,36 @@ TimerTask to be called from TimerFrame
 import java.util.TimerTask;
 import java.util.Timer;
 
-public class ThreadTimer extends TimerTask {
+import java.util.Timer;
+import java.util.TimerTask;
 
-    //Declare counter to count down from
-    private static int counter;
-
-    public ThreadTimer(int timerStartValue){
-
-        counter = timerStartValue;
-        Timer timer = new Timer("Countdown Timer");
-        timer.scheduleAtFixedRate(new ThreadTimer(counter), 0, 1000);
+public class ThreadTimer extends TimerTask{
+    static int counter = 3;
+    boolean downState = true;
+    public static void main(String [] args) {
+        Timer timer = new Timer("MyTimer");
+        timer.scheduleAtFixedRate(new ThreadTimer(), 0, 1000);
     }
-
-//    //Testing only
-//    public static void main(String[] args){
-//      ThreadTimer t = new ThreadTimer(10);
-//
-//    }
 
     @Override
-    public void run(){
-        if(counter <= 0){
-            System.out.println("Timer is at: " + counter);
-            counter++;
-        }
-        if(counter > 0){
+    public void run() {
+
+        if(counter > 0 && downState){
             System.out.println("Timer is at: " + counter);
             counter --;
+        }else if(counter == 0) {
+            System.out.println("Timer is at: " + counter);
+            downState = false;
+            counter ++;
         }
+        if(counter < 0){
+                System.out.println("Timer is at: " + counter);
+                counter++;
+            }
+
     }
 
-    public int getCounter(){
+    public int getState(){
         return counter;
     }
 }
