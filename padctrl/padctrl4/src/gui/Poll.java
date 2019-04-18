@@ -212,14 +212,14 @@ public class Poll extends Template implements ActionListener {
         
         String command = e.getActionCommand();
         
-        if (command.equals("Next")) {
+        if(command.equals("Next")) {
             
         }
-        if (command.equals("Return")) {
+        if(command.equals("Return")) {
             
             this.dispose();
         }
-        else if (command.equals("Exit Application")) {
+        else if(command.equals("Exit Application")) {
             
             System.exit(0);
         }
