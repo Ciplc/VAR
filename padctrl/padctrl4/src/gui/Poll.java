@@ -1,6 +1,6 @@
 package gui;
 /*
-Written by An T and Henry G for VAR padctrl 4/16/2019
+Written by An T and Henry G for VAR padctrl 4/18/2019
 Poll frame for padctrl, will poll user for status of various depts.
  */
 import java.awt.*;
@@ -13,6 +13,8 @@ public class Poll extends Template implements ActionListener {
     //Constants
     
     private final Font BUTTON_FONT = new Font("Trebuchet MS",Font.PLAIN,15);
+    private final Color GO_COLOR = new Color(0,155,0);
+    private final Color NO_GO_COLOR = new Color(255,0,0);
     
     //Declaration of labels
     
@@ -46,6 +48,7 @@ public class Poll extends Template implements ActionListener {
     
     //Declaration of buttons
     
+    private JButton enterButton = new JButton("Enter Status");
     private JButton proceedButton = new JButton("Proceed with the Countdown");
     
     //Declaration of panels
@@ -68,6 +71,11 @@ public class Poll extends Template implements ActionListener {
         
         this.setTitle("Launch Poll");
         this.setBounds(100,50,700,160);
+        
+        //Adding actionlistener to buttons
+        
+        enterButton.addActionListener(this);
+        proceedButton.addActionListener(this);
         
         //Formatting labels
         
@@ -191,7 +199,8 @@ public class Poll extends Template implements ActionListener {
         //Adding and Removing from buttonPanels
         
         navigationButtonPanel.remove(nextButton);
-        buttonPanel.add(proceedButton,BorderLayout.WEST);
+        buttonPanel.add(enterButton,BorderLayout.WEST);
+        buttonPanel.add(proceedButton,BorderLayout.CENTER);
         
         //Adding to frame
         
@@ -203,23 +212,107 @@ public class Poll extends Template implements ActionListener {
 
     //For testing purposes only
     
-//    public static void main(String[] args) {
-//        Poll testObject = new Poll();
-//    }
+    public static void main(String[] args) {
+        Poll testObject = new Poll();
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         
         String command = e.getActionCommand();
         
-        if(command.equals("Next")) {
+        if(command.equals("Enter Status")) {
             
+            if(awaitingBoosterButton.isSelected()) {
+            
+            boosterPanel.setBackground(BACKGROUND_COLOR);
+            pollingBoosterPanel.setBackground(BACKGROUND_COLOR);
+            System.out.println("awaiting");
+            }
+            if(goBoosterButton.isSelected() ) {
+
+                boosterPanel.setBackground(GO_COLOR);
+                pollingBoosterPanel.setBackground(GO_COLOR);
+                System.out.println("go");
+            }
+            if(noGoBoosterButton.isSelected()) {
+
+                boosterPanel.setBackground(NO_GO_COLOR);
+                pollingBoosterPanel.setBackground(NO_GO_COLOR);
+                System.out.println("no go");
+            }
+            if(awaitingGuidanceButton.isSelected()) {
+
+                guidancePanel.setBackground(BACKGROUND_COLOR);
+                pollingGuidancePanel.setBackground(BACKGROUND_COLOR);
+                System.out.println("awaiting");
+            }
+            if(goGuidanceButton.isSelected()) {
+
+                guidancePanel.setBackground(GO_COLOR);
+                pollingGuidancePanel.setBackground(GO_COLOR);
+                System.out.println("go");
+            }
+            if(noGoGuidanceButton.isSelected()) {
+
+                guidancePanel.setBackground(NO_GO_COLOR);
+                pollingGuidancePanel.setBackground(NO_GO_COLOR);
+                System.out.println("no go");
+            }
+            if(awaitingRangeButton.isSelected()) {
+
+                rangePanel.setBackground(BACKGROUND_COLOR);
+                pollingRangePanel.setBackground(BACKGROUND_COLOR);
+                System.out.println("awaiting");
+            }
+            if(goRangeButton.isSelected()) {
+
+                rangePanel.setBackground(GO_COLOR);
+                pollingRangePanel.setBackground(GO_COLOR);
+                System.out.println("go");
+            }
+            if(noGoRangeButton.isSelected()) {
+
+                rangePanel.setBackground(NO_GO_COLOR);
+                pollingRangePanel.setBackground(NO_GO_COLOR);
+                System.out.println("no go");
+            }
+            if(awaitingFlightButton.isSelected()) {
+
+                flightPanel.setBackground(BACKGROUND_COLOR);
+                pollingFlightPanel.setBackground(BACKGROUND_COLOR);
+                System.out.println("awaiting");
+            }
+            if(goFlightButton.isSelected()) {
+
+                flightPanel.setBackground(GO_COLOR);
+                pollingFlightPanel.setBackground(GO_COLOR);
+                System.out.println("go");
+            }
+            if(noGoFlightButton.isSelected()) {
+
+                flightPanel.setBackground(NO_GO_COLOR);
+                pollingFlightPanel.setBackground(NO_GO_COLOR);
+                System.out.println("no go");
+            }
+        }
+        if(command.equals("Proceed with the Countdown")) {
+            
+            if(goBoosterButton.isSelected() && goGuidanceButton.isSelected() && 
+                    goRangeButton.isSelected() && goFlightButton.isSelected()) {
+               
+                System.out.println("All systems are go.");
+            }    
+            else {
+                
+                System.out.println("All systems are not currently go.");
+            }
         }
         if(command.equals("Return")) {
             
             this.dispose();
         }
-        else if(command.equals("Exit Application")) {
+        if(command.equals("Exit Application")) {
             
             System.exit(0);
         }
