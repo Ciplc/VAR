@@ -10,8 +10,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class ThreadTimer extends TimerTask{
-    static int counter = 3;
-    boolean downState = true;
+    public int counter = 3;
+    private boolean downState = true;
     public static void main(String [] args) {
         Timer timer = new Timer("MyTimer");
         timer.scheduleAtFixedRate(new ThreadTimer(), 0, 1000);
