@@ -25,3 +25,6 @@ Status Feed:
 
 Final Report:
     Final report with the summary of the launch with a preformatted output with stuff taken during input frame
+
+Timer Frame:
+    Countdown time then runs up time
