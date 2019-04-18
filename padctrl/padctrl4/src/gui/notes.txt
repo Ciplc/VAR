@@ -1,0 +1,27 @@
+Input:
+    Date
+    Countdown time
+    Mission Name
+    Launch Location
+    Vehicle
+    Payload
+    Mission Type: Dropdown btwn std and CMP
+    Motor Used
+    Primary Obj
+    Secondary Obj
+    Hold Params: Opt for multiple
+
+Poll:
+    ActionPerformed
+
+Welcome:
+    Finish input frame
+
+Launch Notification:
+    Pop-up to tell you it launched
+
+Status Feed:
+    Use preset labels in scroll pane
+
+Final Report:
+    Final report with the summary of the launch with a preformatted output with stuff taken during input frame
