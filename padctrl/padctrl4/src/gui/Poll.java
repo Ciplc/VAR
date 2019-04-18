@@ -204,7 +204,6 @@ public class Poll extends Template implements ActionListener {
     //For testing purposes only
     
 //    public static void main(String[] args) {
-//        
 //        Poll testObject = new Poll();
 //    }
 
