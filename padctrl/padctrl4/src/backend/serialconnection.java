@@ -6,18 +6,18 @@ import com.fazecast.jSerialComm.SerialPort;
 
 public class serialconnection{
 
-    private SerialPort sp = SerialPort.getCommPorts()[0];
-
-    private SerialPort sp2;
+    private SerialPort sp;
     private String device_path;
 
     public serialconnection(String path_to_device){
 
         device_path = path_to_device;
-        setSp2();
 
-        //open_port(sp);
-        open_port(sp2);
+        //Set the serialport to the passed string
+        setSp();
+        //Open connection to serial then return name
+        open_port(sp);
+        System.out.println(getSpName());
     }
 
     //Write byte[] to serial
@@ -26,7 +26,7 @@ public class serialconnection{
             sp.getOutputStream().write(message.byteValue());
             sp.getOutputStream().flush();
             System.out.println("Wrote " + message.byteValue());
-        } catch(Exception IOException){
+        }catch(Exception IOException){
             System.out.println("Exception in IOException");
         }
     }
@@ -40,16 +40,17 @@ public class serialconnection{
         }
     }
 
-    public void setSp2(){
-        sp2.getCommPort(device_path);
+    //Set get methods for the designated SerialPort
+    private void setSp(){
+        sp = SerialPort.getCommPort(device_path);
     }
 
-    public String getSp2Name(){
-        return sp2.getSystemPortName();
+    private String getSpName(){
+        return sp.getSystemPortName();
     }
 
     //check if the specified port is open, if so configure port to liking
-    public void open_port(SerialPort port){
+    private void open_port(SerialPort port){
 
         if(port.openPort()){
             System.out.println("Port opened on " + port.getSystemPortName());
@@ -59,11 +60,10 @@ public class serialconnection{
             System.out.println("Error, port not opened");
         }
     }
+
     //temporary start for testing class
-    public static void main(String[] args){
-        Integer test = 11;
-        serialconnection s = new serialconnection("/dev/cu.MALS");
-        s.serial_write(test);
-        s.close_port();
-    }
+//    public static void main(String[] args){
+//        Integer test = 11;
+//        serialconnection s = new serialconnection("");
+//    }
 }
