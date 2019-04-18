@@ -54,7 +54,7 @@ public class Input extends Template implements ActionListener {
     }
 
     //Testing purposes only
-    public static void main(String[] args){
-
-    }
+//    public static void main(String[] args){
+//
+//    }
 }

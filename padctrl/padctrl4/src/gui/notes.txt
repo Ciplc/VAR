@@ -21,7 +21,7 @@ Launch Notification:
     Pop-up to tell you it launched
 
 Status Feed:
-    Use preset labels in scroll pane
+    Use preset labels in scroll pane as countdown proceeds
 
 Final Report:
     Final report with the summary of the launch with a preformatted output with stuff taken during input frame
