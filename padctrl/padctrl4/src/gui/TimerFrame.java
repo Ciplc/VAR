@@ -15,7 +15,7 @@ public class TimerFrame extends Template implements ActionListener {
     //Declaring Counter
     static int counter = 10;
 
-    private JButton start = new JButton("Start TImer");
+    private JButton start = new JButton("Start Timer");
     private JLabel state = new JLabel(String.valueOf(counter));
     private JPanel testPanel = new JPanel(new BorderLayout());
 
@@ -24,7 +24,7 @@ public class TimerFrame extends Template implements ActionListener {
 
         testPanel.add(start, BorderLayout.SOUTH);
         testPanel.add(state, BorderLayout.NORTH);
-
+        start.addActionListener(this);
         this.add(testPanel);
         this.setVisible(true);
     }
@@ -35,34 +35,23 @@ public class TimerFrame extends Template implements ActionListener {
         TimerFrame tf = new TimerFrame();
     }
 
+    public void refreshLabel(ThreadTimer t){
+
+        state.setText(String.valueOf(t.getState()));
+        System.out.println(t.getState());
+        this.validate();
+        this.repaint();
+    }
     @Override
     public void actionPerformed(ActionEvent e){
 
         String command = e.getActionCommand();
-        ThreadTimer t = new ThreadTimer();
 
         if(command.equals("Start Timer")){
-            //ThreadTimer t = new ThreadTimer(10);
 
-            //Making a new TimerTask
-//            TimerTask timerTask = new TimerTask() {
-//
-//                @Override
-//                public void run() {
-//                    if(counter <= 0){
-//                        System.out.println("Timer is at: " + counter);
-//                        counter++;
-//                    }
-//                    if(counter > 0){
-//                        System.out.println("Timer is at: " + counter);
-//                        counter --;
-//                    }
-//                }
-//            }; //End of the TimerTask declaration
-
-//            Timer timer = new Timer("Countdown Timer");
-//            timer.scheduleAtFixedRate(timerTask, 0,1000);
+            ThreadTimer t = new ThreadTimer();
             state.setText(String.valueOf(t.getState()));
+            System.out.println(t.getState());
         }
 
         this.validate();
