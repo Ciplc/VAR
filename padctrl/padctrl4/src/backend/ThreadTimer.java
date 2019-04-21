@@ -38,6 +38,11 @@ public class ThreadTimer extends TimerTask{
 
     }
 
+    public void startTimer(){
+        Timer timer = new Timer("Countdown Timer");
+        timer.scheduleAtFixedRate(new ThreadTimer(), 0, 1000);
+    }
+
     public int getState(){
         return counter;
     }

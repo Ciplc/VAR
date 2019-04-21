@@ -14,7 +14,7 @@ public class TimerFrame extends Template implements ActionListener {
 
     //Declaring Counter
     static int counter = 10;
-
+    boolean counting = false;
     private JButton start = new JButton("Start Timer");
     private JLabel state = new JLabel(String.valueOf(counter));
     private JPanel testPanel = new JPanel(new BorderLayout());
@@ -37,11 +37,14 @@ public class TimerFrame extends Template implements ActionListener {
 
     public void refreshLabel(ThreadTimer t){
 
-        state.setText(String.valueOf(t.getState()));
-        System.out.println(t.getState());
-        this.validate();
-        this.repaint();
+        while(counting){
+            state.setText(String.valueOf(t.getState()));
+            System.out.println(t.getState());
+            this.validate();
+            this.repaint();
+        }
     }
+
     @Override
     public void actionPerformed(ActionEvent e){
 
@@ -50,8 +53,19 @@ public class TimerFrame extends Template implements ActionListener {
         if(command.equals("Start Timer")){
 
             ThreadTimer t = new ThreadTimer();
-            state.setText(String.valueOf(t.getState()));
-            System.out.println(t.getState());
+            t.startTimer();
+            counting = true;
+            //refreshLabel(t);
+
+            while(counting){
+                state.setText(String.valueOf(t.getState()));
+                System.out.println(t.getState());
+                this.validate();
+                this.repaint();
+            }
+        }
+        if(command.equals("Exit Application")){
+            System.exit(0);
         }
 
         this.validate();
