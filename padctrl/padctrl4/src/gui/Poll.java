@@ -221,7 +221,11 @@ public class Poll extends Template implements ActionListener {
         
         String command = e.getActionCommand();
         
+        //Changes colors of frame depending on status
+        
         if(command.equals("Enter Status")) {
+            
+            //Changes to gray if awaiting
             
             if(awaitingBoosterButton.isSelected()) {
             
@@ -229,66 +233,99 @@ public class Poll extends Template implements ActionListener {
             pollingBoosterPanel.setBackground(BACKGROUND_COLOR);
             System.out.println("awaiting");
             }
+            
+            //Changes to green if go
+            
             if(goBoosterButton.isSelected() ) {
 
                 boosterPanel.setBackground(GO_COLOR);
                 pollingBoosterPanel.setBackground(GO_COLOR);
                 System.out.println("go");
             }
+            
+            //Changes to red if no go
+            
             if(noGoBoosterButton.isSelected()) {
 
                 boosterPanel.setBackground(NO_GO_COLOR);
                 pollingBoosterPanel.setBackground(NO_GO_COLOR);
                 System.out.println("no go");
             }
+            
+            //Changes to gray if awaiting
+            
             if(awaitingGuidanceButton.isSelected()) {
 
                 guidancePanel.setBackground(BACKGROUND_COLOR);
                 pollingGuidancePanel.setBackground(BACKGROUND_COLOR);
                 System.out.println("awaiting");
             }
+            
+            //Changes to green if go
+            
             if(goGuidanceButton.isSelected()) {
 
                 guidancePanel.setBackground(GO_COLOR);
                 pollingGuidancePanel.setBackground(GO_COLOR);
                 System.out.println("go");
             }
+            
+            //Changes to red if no go
+            
             if(noGoGuidanceButton.isSelected()) {
 
                 guidancePanel.setBackground(NO_GO_COLOR);
                 pollingGuidancePanel.setBackground(NO_GO_COLOR);
                 System.out.println("no go");
             }
+            
+            //Changes to gray if awaiting
+            
             if(awaitingRangeButton.isSelected()) {
 
                 rangePanel.setBackground(BACKGROUND_COLOR);
                 pollingRangePanel.setBackground(BACKGROUND_COLOR);
                 System.out.println("awaiting");
             }
+            
+            //Changes to green if go
+            
             if(goRangeButton.isSelected()) {
 
                 rangePanel.setBackground(GO_COLOR);
                 pollingRangePanel.setBackground(GO_COLOR);
                 System.out.println("go");
             }
+            
+            //Changes to red if no go
+            
             if(noGoRangeButton.isSelected()) {
 
                 rangePanel.setBackground(NO_GO_COLOR);
                 pollingRangePanel.setBackground(NO_GO_COLOR);
                 System.out.println("no go");
             }
+            
+            //Changes to gray if awaiting
+            
             if(awaitingFlightButton.isSelected()) {
 
                 flightPanel.setBackground(BACKGROUND_COLOR);
                 pollingFlightPanel.setBackground(BACKGROUND_COLOR);
                 System.out.println("awaiting");
             }
+            
+            //Changes to green if go
+            
             if(goFlightButton.isSelected()) {
 
                 flightPanel.setBackground(GO_COLOR);
                 pollingFlightPanel.setBackground(GO_COLOR);
                 System.out.println("go");
             }
+            
+            //Changes to red if no go
+            
             if(noGoFlightButton.isSelected()) {
 
                 flightPanel.setBackground(NO_GO_COLOR);
@@ -296,7 +333,120 @@ public class Poll extends Template implements ActionListener {
                 System.out.println("no go");
             }
         }
+        
+        //Proceeds with countdown when pressed
+        
         if(command.equals("Proceed with the Countdown")) {
+            
+            //Changes to gray if awaiting
+            
+            if(awaitingBoosterButton.isSelected()) {
+            
+            boosterPanel.setBackground(BACKGROUND_COLOR);
+            pollingBoosterPanel.setBackground(BACKGROUND_COLOR);
+            System.out.println("awaiting");
+            }
+            
+            //Changes to green if go
+            
+            if(goBoosterButton.isSelected() ) {
+
+                boosterPanel.setBackground(GO_COLOR);
+                pollingBoosterPanel.setBackground(GO_COLOR);
+                System.out.println("go");
+            }
+            
+            //Changes to red if no go
+            
+            if(noGoBoosterButton.isSelected()) {
+
+                boosterPanel.setBackground(NO_GO_COLOR);
+                pollingBoosterPanel.setBackground(NO_GO_COLOR);
+                System.out.println("no go");
+            }
+            
+            //Changes to gray if awaiting
+            
+            if(awaitingGuidanceButton.isSelected()) {
+
+                guidancePanel.setBackground(BACKGROUND_COLOR);
+                pollingGuidancePanel.setBackground(BACKGROUND_COLOR);
+                System.out.println("awaiting");
+            }
+            
+            //Changes to green if go
+            
+            if(goGuidanceButton.isSelected()) {
+
+                guidancePanel.setBackground(GO_COLOR);
+                pollingGuidancePanel.setBackground(GO_COLOR);
+                System.out.println("go");
+            }
+            
+            //Changes to red if no go
+            
+            if(noGoGuidanceButton.isSelected()) {
+
+                guidancePanel.setBackground(NO_GO_COLOR);
+                pollingGuidancePanel.setBackground(NO_GO_COLOR);
+                System.out.println("no go");
+            }
+            
+            //Changes to gray if awaiting
+            
+            if(awaitingRangeButton.isSelected()) {
+
+                rangePanel.setBackground(BACKGROUND_COLOR);
+                pollingRangePanel.setBackground(BACKGROUND_COLOR);
+                System.out.println("awaiting");
+            }
+            
+            //Changes to green if go
+            
+            if(goRangeButton.isSelected()) {
+
+                rangePanel.setBackground(GO_COLOR);
+                pollingRangePanel.setBackground(GO_COLOR);
+                System.out.println("go");
+            }
+            
+            //Changes to red if no go
+            
+            if(noGoRangeButton.isSelected()) {
+
+                rangePanel.setBackground(NO_GO_COLOR);
+                pollingRangePanel.setBackground(NO_GO_COLOR);
+                System.out.println("no go");
+            }
+            
+            //Changes to gray if awaiting
+            
+            if(awaitingFlightButton.isSelected()) {
+
+                flightPanel.setBackground(BACKGROUND_COLOR);
+                pollingFlightPanel.setBackground(BACKGROUND_COLOR);
+                System.out.println("awaiting");
+            }
+            
+            //Changes to green if go
+            
+            if(goFlightButton.isSelected()) {
+
+                flightPanel.setBackground(GO_COLOR);
+                pollingFlightPanel.setBackground(GO_COLOR);
+                System.out.println("go");
+            }
+            
+            //Changes to red if no go
+            
+            if(noGoFlightButton.isSelected()) {
+
+                flightPanel.setBackground(NO_GO_COLOR);
+                pollingFlightPanel.setBackground(NO_GO_COLOR);
+                System.out.println("no go");
+            }
+            
+            //If all roles are go, continue to next frame and start countdown
             
             if(goBoosterButton.isSelected() && goGuidanceButton.isSelected() && 
                     goRangeButton.isSelected() && goFlightButton.isSelected()) {
