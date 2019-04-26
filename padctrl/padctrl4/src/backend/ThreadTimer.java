@@ -6,9 +6,6 @@ TimerTask to be called from TimerFrame
 import java.util.TimerTask;
 import java.util.Timer;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 public class ThreadTimer extends TimerTask{
     public int counter = 3;
     private boolean downState = true;
