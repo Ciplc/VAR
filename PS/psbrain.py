@@ -3,7 +3,7 @@
 # Also records from a camera
 # sense_emu is the sensehat -v for emulation on a RPI
 # sense_hat is the non emulated -v
-from sense_emu import SenseHat
+from sense_hat import SenseHat
 import datetime
 import sys
 import picamera
@@ -107,7 +107,7 @@ class DataWrite:
         """Writes data to data.csv in append mode as to not delete headers or previous data"""
         with open('data.csv', 'a') as f:
             writer = csv.writer(f)
-            writer.writerows(self.get_data())
+            writer.writerows(str(self.get_data()))
 
 
 # Camera class which aids in the basic operations of the picamera
@@ -121,7 +121,8 @@ class Camera:
         """Reads the number of runs from runnum.json in order to have file extensions in an ordered fashion"""
         with open('runnum.json') as f:
             data = json.loads(f.read())
-            return data['runs']
+            return str(data['runs'])
+            
 
     def dump_run(self):
         """Dumps the number of runs plus one into runnum.json"""
@@ -179,13 +180,26 @@ def main():
     loop()
 
 
+def main2():
+    camera = Camera()
+    csvsetup = CSVSetup()
+    
+    csvsetup.setheaders()
+    
+    loop()
+    
+    
 def loop():
-
+    camera = Camera()
+    
+    camera.camera.resolution = (1920, 1080)
+    
     data = DataWrite()
     while True:
-        time.sleep(120)
+        camera.start_recording()
+        time.sleep(10)
         data.write_data()
-
+        camera.stop_recording()
 
 if __name__ == '__main__':
-    main()
+    main2()
