@@ -97,6 +97,7 @@ class DataWrite:
         enviro_res = get_enviro()
         imu_res = get_imu()
         current_time = str(datetime.datetime.now())
+        print(str(datetime.datetime.now()))
         results = [current_time, ]
         results.extend(enviro_res)
         results.extend(imu_res)
