@@ -96,10 +96,11 @@ class DataWrite:
         # Get data from sensors and add time then append together
         enviro_res = get_enviro()
         imu_res = get_imu()
-        current_time = datetime.datetime.now()
-        results = [current_time, ]
+        current_time = datetime.datetime.now().strftime("%d-%b-%Y (%H:%M:%S.%f)")
+        results = [current_time]
         results.extend(enviro_res)
         results.extend(imu_res)
+        print(results)
 
         return results
 
@@ -107,7 +108,7 @@ class DataWrite:
         """Writes data to data.csv in append mode as to not delete headers or previous data"""
         with open('data.csv', 'a') as f:
             writer = csv.writer(f)
-            writer.writerows(str(self.get_data()))
+            writer.writerow(self.get_data())
 
 
 # Camera class which aids in the basic operations of the picamera
@@ -122,12 +123,11 @@ class Camera:
         with open('runnum.json') as f:
             data = json.loads(f.read())
             return str(data['runs'])
-            
 
     def dump_run(self):
         """Dumps the number of runs plus one into runnum.json"""
-        data = {'runs': self.read_run() + 1}
-        with open('runum.json', 'w') as f:
+        data = {'runs': int(self.read_run()) + 1}
+        with open('runnum.json', 'w') as f:
             json.dump(data, f)
 
     def stop_test(self):
@@ -136,6 +136,7 @@ class Camera:
         for file in os.listdir('./'):
             if file.endswith('.varstp'):
                 self.stop_recording()
+                print("terminated")
 
     def start_recording(self):
         """Starts the picamera recording with the file format of run_runnum.h264"""
@@ -147,59 +148,30 @@ class Camera:
         self.dump_run()
 
 
-class CommandLineArgsInvalid:
-    """Raised when there are too many or not enough command line args"""
-    pass
-
-
+# Startup method
 def main():
-
-    # Defining objects to work with
-    camera = Camera()
     csvsetup = CSVSetup()
-
-    # If the arg in place two is -n set headers up
-    try:
-        if sys.argv[2] == 'n':
-            stat = csvsetup.setheaders()
-            if stat == "Complete":
-                # TODO implement RTC loop
-                pass
-        elif sys.argv[2] == 'a':  # If arg in place two is -a just append
-            # TODO implement RTC loop
-            pass
-        else:  # If neither n nor a is set fail out
-            raise CommandLineArgsInvalid
-    except CommandLineArgsInvalid:
-        print("Error command line arguments are limited to a or n only")
-        exit(0)
-
-    # Set camera resolution and start recording
-    camera.camera.resolution(1920, 1080)
-    camera.start_recording()
-    loop()
-
-
-def main2():
-    camera = Camera()
-    csvsetup = CSVSetup()
-    
     csvsetup.setheaders()
-    
     loop()
-    
-    
+
+
+# Looping task
 def loop():
+
+    # Defining objects
     camera = Camera()
-    
-    camera.camera.resolution = (1920, 1080)
-    
     data = DataWrite()
+
+    # Configuring camera and starting the recording
+    camera.camera.resolution = (1920, 1080)
+    camera.start_recording()
+
+    # Waiting for two minutes between data readings
     while True:
-        camera.start_recording()
-        time.sleep(10)
+        time.sleep(120)
         data.write_data()
-        camera.stop_recording()
+        camera.stop_test()
+
 
 if __name__ == '__main__':
-    main2()
+    main()
