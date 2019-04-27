@@ -198,7 +198,8 @@ def loop():
         camera.start_recording()
         time.sleep(10)
         data.write_data()
-        camera.stop_recording()
+        camera.camera.close()
+
 
 if __name__ == '__main__':
     main2()
