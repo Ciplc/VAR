@@ -180,7 +180,6 @@ def main():
 
 
 def main2():
-    camera = Camera()
     csvsetup = CSVSetup()
     
     csvsetup.setheaders()
