@@ -96,8 +96,8 @@ class DataWrite:
         # Get data from sensors and add time then append together
         enviro_res = get_enviro()
         imu_res = get_imu()
-        print(datetime.datetime.now().strftime("%H.%M.%S.%f"))
-        current_time = datetime.datetime.now().strftime("%H.%M.%S.%f")
+        print(datetime.datetime.now().strftime("%d-%b-%Y (%H:%M:%S.%f)"))
+        current_time = datetime.datetime.now().strftime("%d-%b-%Y (%H:%M:%S.%f)")
         results = [current_time]
         print(results)
         results.extend(enviro_res)
