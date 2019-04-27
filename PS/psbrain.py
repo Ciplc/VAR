@@ -126,7 +126,7 @@ class Camera:
     def dump_run(self):
         """Dumps the number of runs plus one into runnum.json"""
         data = {'runs': int(self.read_run()) + 1}
-        with open('runum.json', 'w') as f:
+        with open('runnum.json', 'w') as f:
             json.dump(data, f)
 
     def stop_test(self):
