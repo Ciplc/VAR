@@ -151,59 +151,30 @@ class Camera:
         self.dump_run()
 
 
-class CommandLineArgsInvalid:
-    """Raised when there are too many or not enough command line args"""
-    pass
-
-
+# Startup method
 def main():
-
-    # Defining objects to work with
-    camera = Camera()
     csvsetup = CSVSetup()
-
-    # If the arg in place two is -n set headers up
-    try:
-        if sys.argv[2] == 'n':
-            stat = csvsetup.setheaders()
-            if stat == "Complete":
-                # TODO implement RTC loop
-                pass
-        elif sys.argv[2] == 'a':  # If arg in place two is -a just append
-            # TODO implement RTC loop
-            pass
-        else:  # If neither n nor a is set fail out
-            raise CommandLineArgsInvalid
-    except CommandLineArgsInvalid:
-        print("Error command line arguments are limited to a or n only")
-        exit(0)
-
-    # Set camera resolution and start recording
-    camera.camera.resolution(1920, 1080)
-    camera.start_recording()
-    loop()
-
-
-def main2():
-    csvsetup = CSVSetup()
-    
     csvsetup.setheaders()
-    
     loop()
-    
-    
+
+
+# Looping task
 def loop():
+
+    # Defining objects
     camera = Camera()
-    
-    camera.camera.resolution = (1920, 1080)
-    camera.start_recording()
     data = DataWrite()
 
+    # Configuring camera and starting the recording
+    camera.camera.resolution = (1920, 1080)
+    camera.start_recording()
+
+    # Waiting for two minutes between data readings
     while True:
-        time.sleep(10)
+        time.sleep(120)
         data.write_data()
         camera.stop_test()
 
 
 if __name__ == '__main__':
-    main2()
+    main()
