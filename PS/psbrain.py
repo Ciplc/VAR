@@ -96,7 +96,7 @@ class DataWrite:
         # Get data from sensors and add time then append together
         enviro_res = get_enviro()
         imu_res = get_imu()
-        current_time = datetime.datetime.now()
+        current_time = str(datetime.datetime.now())
         results = [current_time, ]
         results.extend(enviro_res)
         results.extend(imu_res)
@@ -107,7 +107,7 @@ class DataWrite:
         """Writes data to data.csv in append mode as to not delete headers or previous data"""
         with open('data.csv', 'a') as f:
             writer = csv.writer(f)
-            writer.writerows(str(self.get_data()))
+            writer.writerows(self.get_data())
 
 
 # Camera class which aids in the basic operations of the picamera
