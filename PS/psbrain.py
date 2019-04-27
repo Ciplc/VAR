@@ -135,6 +135,7 @@ class Camera:
         for file in os.listdir('./'):
             if file.endswith('.varstp'):
                 self.stop_recording()
+                print("terminated")
 
     def start_recording(self):
         """Starts the picamera recording with the file format of run_runnum.h264"""
@@ -191,13 +192,13 @@ def loop():
     camera = Camera()
     
     camera.camera.resolution = (1920, 1080)
-    
+    camera.start_recording()
     data = DataWrite()
+
     while True:
-        camera.start_recording()
         time.sleep(10)
         data.write_data()
-        camera.stop_recording()
+        camera.stop_test()
 
 
 if __name__ == '__main__':
