@@ -6,6 +6,7 @@ NoGo reminder for status of various depots
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import logging.data;
 
 public class noGoReminder extends Template implements ActionListener {
 
