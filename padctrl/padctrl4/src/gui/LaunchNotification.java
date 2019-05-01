@@ -1,5 +1,8 @@
 package gui;
-
+/*
+Written by Henry G for VAR padctrl 5/1/2019
+Notifies user of launch, if noise and smoke isn't enough to give that away already
+ */
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
