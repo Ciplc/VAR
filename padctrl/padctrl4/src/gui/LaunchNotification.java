@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 public class LaunchNotification extends Template implements ActionListener {
 
+    //Declaring Objects
     private JPanel conformationPanel = new JPanel(new BorderLayout());
     private JLabel launchLabel = new JLabel("Launched",SwingConstants.CENTER);
 
@@ -29,7 +30,7 @@ public class LaunchNotification extends Template implements ActionListener {
         //Modifying button panel
         buttonPanel.remove(navigationButtonPanel);
         buttonPanel.add(navigationButtonPanel,BorderLayout.CENTER);
-        
+
         //Add Components and set visible
         this.add(conformationPanel,BorderLayout.CENTER);
         this.setVisible(true);
