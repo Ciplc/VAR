@@ -15,7 +15,7 @@ public class Template extends JFrame implements ActionListener {
     public final Font BUTTON_FONT = new Font("Trebuchet MS",Font.PLAIN,15);
     public final Color BACKGROUND_COLOR = new Color(95,95,95);
     public final Font DEFAULT_FONT = new Font("Trebuchet MS",Font.PLAIN,20);
-    public final Font WARNING_FONT = new Font("Trebuchet MS",Font.BOLD,25);
+    public final Font WARNING_FONT = new Font("Trebuchet MS",Font.BOLD,20);
 
     //Declarations
     

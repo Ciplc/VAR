@@ -7,41 +7,41 @@ import java.awt.event.ActionListener;
 public class Input extends Template implements ActionListener {
 
     //Declaring inputs gathered
-    private String Date;
-    private Integer CountdownTime;
-    private String LaunchLocation;
-    private String Vehicle;
-    private String Payload;
-    private String Motor;
-    private String PrimaryObj;
-    private String SecondObj;
+    private String date;
+    private Integer countdownTime;
+    private String launchLocation;
+    private String vehicle;
+    private String payload;
+    private String motor;
+    private String primaryObj;
+    private String secondObj;
     //TODO Hold Parameters and Mission Type
 
     //Declaring TextFields
-    private JTextField DateField;
-    private JTextField CountdownTimeField;
-    private JTextField LaunchLocationField;
-    private JTextField VehicleField;
-    private JTextField PayloadField;
-    private JTextField MotorField;
-    private JTextField PrimaryObjField;
-    private JTextField SecondaryObjField;
+    private JTextField dateField;
+    private JTextField countdownTimeField;
+    private JTextField launchLocationField;
+    private JTextField vehicleField;
+    private JTextField payloadField;
+    private JTextField motorField;
+    private JTextField primaryObjField;
+    private JTextField secondaryObjField;
 
     //Declaring Mission Type objs
-    private JComboBox<String> MissionTypeComboBox;
-    private String[] MissionTypeArray = {"Standard", "CMP"};
+    private JComboBox<String> missionTypeComboBox;
+    private String[] missionTypeArray = {"Standard", "CMP"};
 
     //Declaring Panels
-    private JPanel DatePanel = new JPanel(new BorderLayout());
-    private JPanel CountdownTimePanel  = new JPanel(new BorderLayout());
-    private JPanel LaunchLocationPanel = new JPanel(new BorderLayout());
-    private JPanel VehiclePanel = new JPanel(new BorderLayout());
-    private JPanel PayloadPanel = new JPanel(new BorderLayout());
-    private JPanel MotorPanel = new JPanel(new BorderLayout());
-    private JPanel PrimaryObjPanel = new JPanel(new BorderLayout());
-    private JPanel SecondaryObjPanel = new JPanel(new BorderLayout());
-    private JPanel MissionTypePanel = new JPanel(new BorderLayout());
-    private JPanel HoldParamPanel = new JPanel(new BorderLayout());
+    private JPanel datePanel = new JPanel(new BorderLayout());
+    private JPanel countdownTimePanel  = new JPanel(new BorderLayout());
+    private JPanel launchLocationPanel = new JPanel(new BorderLayout());
+    private JPanel vehiclePanel = new JPanel(new BorderLayout());
+    private JPanel payloadPanel = new JPanel(new BorderLayout());
+    private JPanel motorPanel = new JPanel(new BorderLayout());
+    private JPanel primaryObjPanel = new JPanel(new BorderLayout());
+    private JPanel secondaryObjPanel = new JPanel(new BorderLayout());
+    private JPanel missionTypePanel = new JPanel(new BorderLayout());
+    private JPanel holdParamPanel = new JPanel(new BorderLayout());
 
     public Input(){
 
@@ -50,7 +50,11 @@ public class Input extends Template implements ActionListener {
         this.setBounds(100,50,700,160);
 
         //Mission Type ComboBox
-        MissionTypeComboBox = new JComboBox<>(MissionTypeArray);
+        missionTypeComboBox = new JComboBox<>(missionTypeArray);
+        missionTypeComboBox.addActionListener(this);
+        
+        missionTypePanel.add(missionTypeComboBox);
+        missionTypePanel.setBackground(BACKGROUND_COLOR);
     }
 
     //Testing purposes only

@@ -22,7 +22,7 @@ Welcome:
     Finish input frame
 
 Launch Notification:
-    Pop-up to tell you it launched
+    Pop-up to tell you it launched -done
 
 Status Feed:
     Use preset labels in scroll pane as countdown proceeds to notify user of 
