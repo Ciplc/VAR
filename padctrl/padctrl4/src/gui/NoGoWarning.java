@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class noGoReminder extends Template implements ActionListener {
+public class NoGoRWarning extends Template implements ActionListener {
 
 
     //Constants
@@ -18,7 +18,7 @@ public class noGoReminder extends Template implements ActionListener {
     private JLabel warningLabel = new JLabel("ALL POSITIONS ARE NOT GO FOR "
             + "LAUNCH!",SwingConstants.CENTER);
 
-    public noGoReminder(){
+    public NoGoRWarning(){
 
         //Formatting
         this.setTitle("No Go Reminder");
@@ -50,7 +50,7 @@ public class noGoReminder extends Template implements ActionListener {
 
     //Testing Only
     public static void main(String[] args) {
-        noGoReminder ngr = new noGoReminder();
+        NoGoRWarning ngw = new NoGoRWarning();
 
     }
 
