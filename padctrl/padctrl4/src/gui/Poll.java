@@ -39,6 +39,7 @@ public class Poll extends Template implements ActionListener {
     private JRadioButton awaitingFlightButton = new JRadioButton("AWAITING STATUS");
     private JRadioButton goFlightButton = new JRadioButton("GO");
     private JRadioButton noGoFlightButton = new JRadioButton("NO GO");
+
     private ButtonGroup pollingBoosterGroup = new ButtonGroup();
     private ButtonGroup pollingGuidanceGroup = new ButtonGroup();
     private ButtonGroup pollingRangeGroup = new ButtonGroup();
