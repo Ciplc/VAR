@@ -1,6 +1,6 @@
 package gui;
 /*
-Written by Henry G and An T for VAR padctrl 4/16/2019
+Written by Henry G and An T for VAR padctrl 5/2/2019
 Template frame, nothing to see here move along
  */
 import javax.swing.*;
