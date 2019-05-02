@@ -1,6 +1,6 @@
 package gui;
 /*
-Written by Henry G for var padctrl 5/1/2019
+Written by Henry G and An T for var padctrl 5/2/2019
 NoGo reminder for status of various depots
  */
 import javax.swing.*;
@@ -14,57 +14,36 @@ public class NoGoReminder extends Template implements ActionListener {
     private final Color NO_GO_COLOR = new Color(255,0,0);
 
     //Declaring Objects
-    private JPanel boosterPanel = new JPanel(new BorderLayout());
-    private JPanel guidancePanel = new JPanel(new BorderLayout());
-    private JPanel rangePanel = new JPanel(new BorderLayout());
-    private JPanel flightPanel = new JPanel(new BorderLayout());
-    private JPanel compositePanel = new JPanel((new FlowLayout()));
-
-    private JLabel boosterNoLabel = new JLabel("Booster No");
-    private JLabel guidanceNoLabel = new JLabel("Guidance No");
-    private JLabel rangeNoLabel = new JLabel("Range No");
-    private JLabel flightNoLabel = new JLabel("Flight No");
-
+    private JPanel textPanel = new JPanel(new BorderLayout());
+    private JLabel warningLabel = new JLabel("ALL POSITIONS ARE NOT GO FOR "
+            + "LAUNCH!",SwingConstants.CENTER);
 
     public NoGoReminder(){
 
         //Formatting
         this.setTitle("No Go Reminder");
         this.setBounds(500,400,500,160);
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        
+        //Formatting labels
+        warningLabel.setFont(WARNING_FONT);
+        warningLabel.setForeground(Color.WHITE);
 
-        //Booster Panel
-        boosterPanel.add(boosterNoLabel, BorderLayout.EAST);
-        boosterPanel.setBackground(NO_GO_COLOR);
-
-        //Guidance Panel
-        guidancePanel.add(guidanceNoLabel, BorderLayout.EAST);
-        guidancePanel.setBackground(NO_GO_COLOR);
-
-        //Range Panel
-        rangePanel.add(rangeNoLabel, BorderLayout.EAST);
-        rangePanel.setBackground(NO_GO_COLOR);
-
-        //Flight Panel
-        flightPanel.add(flightNoLabel, BorderLayout.EAST);
-        flightPanel.setBackground(NO_GO_COLOR);
-
-        //Composite Panel
-        compositePanel.add(boosterPanel);
-        compositePanel.add(guidancePanel);
-        compositePanel.add(rangePanel);
-        compositePanel.add(flightPanel);
-        compositePanel.setBackground(BACKGROUND_COLOR);
+        //Formatting textPanel
+        textPanel.add(warningLabel, BorderLayout.CENTER);
+        textPanel.setBackground(NO_GO_COLOR);
 
         //Modify nav panel
         navigationButtonPanel.remove(nextButton);
-        navigationButtonPanel.remove(returnButton);
+        navigationButtonPanel.remove(exitButton);
+        navigationButtonPanel.setBackground(NO_GO_COLOR);
 
         //Modifying button panel
         buttonPanel.remove(navigationButtonPanel);
         buttonPanel.add(navigationButtonPanel, BorderLayout.CENTER);
 
         //Adding to frame and setting visible
-        this.add(compositePanel);
+        this.add(textPanel);
 
         this.setVisible(true);
     }
