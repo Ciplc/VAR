@@ -3,7 +3,7 @@ package logging;
 Written by Henry G for VAR padctrl 5/1/2019
 Data storage class
  */
-public class data {
+public class Data {
 
     private boolean boosterStat;
     private boolean guidanceStat;
@@ -41,6 +41,4 @@ public class data {
     public void setFlightStat(boolean flightStat) {
         this.flightStat = flightStat;
     }
-
-
 }
