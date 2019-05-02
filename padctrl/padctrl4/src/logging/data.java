@@ -41,6 +41,4 @@ public class data {
     public void setFlightStat(boolean flightStat) {
         this.flightStat = flightStat;
     }
-
-
 }
