@@ -15,12 +15,37 @@ public class noGoReminder extends Template implements ActionListener {
     private JPanel guidancePanel = new JPanel(new BorderLayout());
     private JPanel rangePanel = new JPanel(new BorderLayout());
     private JPanel flightPanel = new JPanel(new BorderLayout());
+    private JPanel compositePanel = new JPanel((new BorderLayout()));
+
+    private JLabel boosterNoLabel = new JLabel("Booster No");
+    private JLabel guidanceNoLable = new JLabel("Guidance No");
+    private JLabel rangeNoLabel = new JLabel("Range No");
+    private JLabel flightNoLabel = new JLabel("Flight No");
+
 
     public noGoReminder(){
 
         //Formatting
         this.setTitle("No Go Reminder");
         this.setBounds(500,400,500,160);
+
+        //Booster Panel
+        boosterPanel.add(boosterNoLabel, BorderLayout.EAST);
+
+        //Guidance Panel
+        guidancePanel.add(guidanceNoLable, BorderLayout.EAST);
+
+        //Range Panel
+        rangePanel.add(rangeNoLabel, BorderLayout.EAST);
+
+        //Flight Panel
+        flightPanel.add(flightNoLabel, BorderLayout.EAST);
+
+        //Composite Panel
+        compositePanel.add(boosterPanel);
+        compositePanel.add(guidancePanel);
+        compositePanel.add(rangePanel);
+        compositePanel.add(flightPanel);
 
         //Modify nav panel
         navigationButtonPanel.remove(nextButton);
@@ -29,6 +54,11 @@ public class noGoReminder extends Template implements ActionListener {
         //Modifying button panel
         buttonPanel.remove(navigationButtonPanel);
         buttonPanel.add(navigationButtonPanel, BorderLayout.CENTER);
+
+        //Adding to frame and setting visible
+        this.add(compositePanel);
+
+        this.setVisible(true);
     }
 
     //Testing Only
