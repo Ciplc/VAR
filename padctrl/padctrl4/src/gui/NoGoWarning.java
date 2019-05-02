@@ -56,9 +56,7 @@ public class noGoReminder extends Template implements ActionListener {
 
     /*@Override
     public void actionPerformed(ActionEvent e){
-
         String command = e.getActionCommand();
-
         if(command.equals("Exit Application")){
             this.dispose();
         }
