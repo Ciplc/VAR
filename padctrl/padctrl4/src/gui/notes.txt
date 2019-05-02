@@ -16,7 +16,7 @@ Poll:
 
 No go:
     Pops up to notify flight director that there is still a position 
-    not ready for launch
+    not ready for launch - done
 
 Welcome:
     Finish input frame
