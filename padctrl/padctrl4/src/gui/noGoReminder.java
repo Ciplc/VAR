@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class NoGoReminder extends Template implements ActionListener {
+public class noGoReminder extends Template implements ActionListener {
 
 
     //Constants
@@ -26,7 +26,7 @@ public class NoGoReminder extends Template implements ActionListener {
     private JLabel flightNoLabel = new JLabel("Flight No");
 
 
-    public NoGoReminder(){
+    public noGoReminder(){
 
         //Formatting
         this.setTitle("No Go Reminder");
@@ -71,7 +71,7 @@ public class NoGoReminder extends Template implements ActionListener {
 
     //Testing Only
     public static void main(String[] args) {
-        NoGoReminder ngr = new NoGoReminder();
+        noGoReminder ngr = new noGoReminder();
 
     }
 
