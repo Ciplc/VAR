@@ -12,7 +12,7 @@ public class Poll extends Template implements ActionListener {
 
     //Constants
     private final Color GO_COLOR = new Color(0,155,0);
-    private final Color NO_GO_COLOR = new Color(255,0,0);
+    private final Color NO_GO_COLOR = new Color(255,42,37);
     
     //Declaration of labels
     
