@@ -11,7 +11,7 @@ public class NoGoWarning extends Template implements ActionListener {
 
 
     //Constants
-    private final Color NO_GO_COLOR = new Color(255,0,0);
+    private final Color NO_GO_COLOR = new Color(255, 42, 37);
 
     //Declaring Objects
     private JPanel textPanel = new JPanel(new BorderLayout());
