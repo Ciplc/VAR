@@ -1,5 +1,6 @@
 package gui;
-/*
+/*\
+Written by Henry G for VAR pad 5/4/2019
 Frame which counts down time given by input and also counts up time after the fact
  */
 import java.awt.*;

@@ -1,6 +1,6 @@
 package gui;
 /*
-Written by An T and Henry G for VAR padctrl 4/18/2019
+Written by An T for VAR padctrl 4/18/2019
 Poll frame for padctrl, will poll user for status of various depts.
  */
 import java.awt.*;
