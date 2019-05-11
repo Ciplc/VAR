@@ -5,7 +5,6 @@
 # sense_hat is the non emulated -v
 from sense_hat import SenseHat
 import datetime
-import sys
 import picamera
 import json
 import csv
