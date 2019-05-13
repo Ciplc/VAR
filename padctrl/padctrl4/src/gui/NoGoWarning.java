@@ -15,8 +15,7 @@ public class NoGoWarning extends Template implements ActionListener {
 
     //Declaring Objects
     private JPanel textPanel = new JPanel(new BorderLayout());
-    private JLabel warningLabel = new JLabel("ALL POSITIONS ARE NOT GO FOR "
-            + "LAUNCH!",SwingConstants.CENTER);
+    private JLabel warningLabel = new JLabel("ALL POSITIONS ARE NOT GO FOR LAUNCH!",SwingConstants.CENTER);
 
     public NoGoWarning(){
 
