@@ -1,4 +1,4 @@
-import numpy
+# Test file for quaterion coordinate systems
 
 
 data = [
