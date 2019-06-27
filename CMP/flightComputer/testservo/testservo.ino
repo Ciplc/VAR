@@ -11,7 +11,7 @@ int servopos2 = 0;
 
 
 void setup() {
-  servo1.attach(10);
+  servo1.attach(10); // Setting pin for talking to servo
   servo2.attach(9);
   
 }
@@ -29,15 +29,4 @@ void loop() {
     delay(15);
   }
 
-}
-
-
-void moveservo1() {
-
-  
-}
-
-
-void moveservo2() {
-  
 }
