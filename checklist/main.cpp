@@ -12,7 +12,7 @@ double actualAltitude;
 
 // Write contents passed to it to a file
 void writeToFile(){
-
+    
 
 }
 
