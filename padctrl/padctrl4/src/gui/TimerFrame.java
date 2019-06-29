@@ -83,7 +83,7 @@ import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 
 public class TimerFrame extends Template implements ActionListener {
-
+/*
     double timeLeft=5000;
     ActionListener countDown=new ActionListener() {
         public void actionPerformed(ActionEvent e){
@@ -101,14 +101,16 @@ public class TimerFrame extends Template implements ActionListener {
 
     private JLabel timeLabel = new JLabel();
     private JPanel testPanel = new JPanel(new BorderLayout());
+*/
+    private TimerPanel tp = new TimerPanel();
 
     public TimerFrame(){
 
-        testPanel.add(timeLabel, BorderLayout.SOUTH);
-        this.add(testPanel);
+        this.add(tp);
         this.setVisible(true);
 
     }
+
 
     public static void main(String[] args){
         TimerFrame tf = new TimerFrame();
