@@ -172,5 +172,7 @@ public class Input extends Template implements ActionListener {
     public static void main(String[] args){
 
         Input testInput = new Input();
+
+        // TODO DEPENDANT ON LOGGING FOR COMPLETION
     }
 }
