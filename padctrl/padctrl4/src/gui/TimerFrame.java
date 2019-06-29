@@ -16,7 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-public class TimerFrame {
+public class TimerFrame extends Template {
 
     public static void main(String[] args) {
         new TimerFrame();
@@ -49,7 +49,6 @@ public class TimerFrame {
         // Constructor for the Panel
         public TestPane() {
             setLayout(new GridBagLayout());
-
 
             // This timer works by setting the system time to a var then tracking time since it set that time then
             // Subtracting it from the start sys time to get the current time
