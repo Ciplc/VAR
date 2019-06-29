@@ -10,7 +10,7 @@ public class FinalReport extends Template implements ActionListener {
 
     }
 
-    //Get data from SQL database
+    // TODO DEPENDENT ON LOGGING
 
     //Format data for display on the frame
 
