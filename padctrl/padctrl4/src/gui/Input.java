@@ -22,6 +22,7 @@ public class Input extends Template implements ActionListener {
     private JLabel dateLabel = new JLabel("Date: ",SwingConstants.RIGHT);
     private JLabel countdownTimeLabel = new JLabel("Countdown Time: ",SwingConstants.RIGHT);
     private JLabel launchLocationLabel = new JLabel("Launch Location: ",SwingConstants.RIGHT);
+    private JLabel missionTypeLabel = new JLabel("Mission Type: ",SwingConstants.RIGHT);
     private JLabel vehicleLabel = new JLabel("Vehicle Type: ",SwingConstants.RIGHT);
     private JLabel payloadLabel = new JLabel("Payload: ",SwingConstants.RIGHT);
     private JLabel motorLabel = new JLabel("Motor: ",SwingConstants.RIGHT);
@@ -52,6 +53,7 @@ public class Input extends Template implements ActionListener {
     private JPanel primaryObjPanel = new JPanel(new BorderLayout());
     private JPanel secondaryObjPanel = new JPanel(new BorderLayout());
     private JPanel missionTypePanel = new JPanel(new BorderLayout());
+    private JPanel missionEnvironmentPanel = new JPanel(new BorderLayout());
     private JPanel holdParamPanel = new JPanel(new BorderLayout());
     private JPanel vehicleDataPanel = new JPanel(new BorderLayout());
     private JPanel objPanel = new JPanel(new BorderLayout());
@@ -61,7 +63,7 @@ public class Input extends Template implements ActionListener {
 
         //Formatting Frame
         this.setTitle("Input");
-        this.setBounds(100,50,600,800);
+        this.setBounds(100,50,450,270);
         this.setLayout(new BorderLayout());
         
         //Formatting labels
@@ -69,6 +71,7 @@ public class Input extends Template implements ActionListener {
         dateLabel.setFont(DEFAULT_FONT);
         countdownTimeLabel.setFont(DEFAULT_FONT);
         launchLocationLabel.setFont(DEFAULT_FONT);
+        missionTypeLabel.setFont(DEFAULT_FONT);
         vehicleLabel.setFont(DEFAULT_FONT);
         payloadLabel.setFont(DEFAULT_FONT);
         motorLabel.setFont(DEFAULT_FONT);
@@ -77,6 +80,7 @@ public class Input extends Template implements ActionListener {
         dateLabel.setForeground(Color.WHITE);
         countdownTimeLabel.setForeground(Color.WHITE);
         launchLocationLabel.setForeground(Color.WHITE);      
+        missionTypeLabel.setForeground(Color.WHITE);      
         vehicleLabel.setForeground(Color.WHITE);  
         payloadLabel.setForeground(Color.WHITE);  
         motorLabel.setForeground(Color.WHITE);  
@@ -128,10 +132,15 @@ public class Input extends Template implements ActionListener {
         missionTypeComboBox.addActionListener(this);
         
         //MissionType Panel
-        missionTypePanel.add(datePanel,BorderLayout.NORTH);
-        missionTypePanel.add(launchLocationPanel,BorderLayout.CENTER);
-        missionTypePanel.add(missionTypeComboBox,BorderLayout.SOUTH);
+        missionTypePanel.add(missionTypeComboBox,BorderLayout.EAST);
+        missionTypePanel.add(missionTypeLabel,BorderLayout.WEST);
         missionTypePanel.setBackground(BACKGROUND_COLOR);
+        
+        //MissionEnvironment Panel
+        missionEnvironmentPanel.add(datePanel,BorderLayout.NORTH);
+        missionEnvironmentPanel.add(launchLocationPanel,BorderLayout.CENTER);
+        missionEnvironmentPanel.add(missionTypePanel,BorderLayout.SOUTH);
+        missionEnvironmentPanel.setBackground(BACKGROUND_COLOR);
         
         //VehicleData Panel
         vehicleDataPanel.add(vehiclePanel,BorderLayout.NORTH);
@@ -145,10 +154,14 @@ public class Input extends Template implements ActionListener {
         
         //Mission Panel
         missionPanel.add(objPanel,BorderLayout.NORTH);
-        missionPanel.add(holdParamPanel,BorderLayout.SOUTH);
+        missionPanel.add(holdParamPanel,BorderLayout.CENTER);
+        missionPanel.add(buttonPanel,BorderLayout.SOUTH);
+        
+        //Remove from frame
+        this.remove(buttonPanel);
         
         //Add to frame
-        this.add(missionTypePanel,BorderLayout.NORTH);
+        this.add(missionEnvironmentPanel,BorderLayout.NORTH);
         this.add(vehicleDataPanel,BorderLayout.CENTER);
         this.add(missionPanel,BorderLayout.SOUTH);
         
