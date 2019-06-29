@@ -3,116 +3,87 @@ package gui;
 Written by Henry G for VAR pad 5/4/2019
 Frame which counts down time given by input and also counts up time after the fact
  */
-/*
-import java.awt.*;
+
+import java.awt.Dimension;
+import java.awt.EventQueue;
+import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import backend.ThreadTimer;
-import java.util.TimerTask;
-import java.util.Timer;
-import javax.swing.*;
-
-public class TimerFrame extends Template implements ActionListener {
-
-    //Declaring Counter
-    static int counter = 10;
-    boolean counting = false;
-    private JButton start = new JButton("Start Timer");
-    private JLabel state = new JLabel(String.valueOf(counter));
-    private JPanel testPanel = new JPanel(new BorderLayout());
-
-    //Setup frame
-    public TimerFrame(){
-
-        testPanel.add(start, BorderLayout.SOUTH);
-        testPanel.add(state, BorderLayout.NORTH);
-        start.addActionListener(this);
-        this.add(testPanel);
-        this.setVisible(true);
-    }
-
-    //Testing only
-    public static void main(String[] args){
-
-        TimerFrame tf = new TimerFrame();
-    }
-
-    public void refreshLabel(ThreadTimer t){
-
-        while(counting){
-            state.setText(String.valueOf(t.getState()));
-            System.out.println(t.getState());
-            this.validate();
-            this.repaint();
-        }
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e){
-
-        String command = e.getActionCommand();
-
-        if(command.equals("Start Timer")){
-
-            ThreadTimer t = new ThreadTimer();
-            t.startTimer();
-            counting = true;
-            //refreshLabel(t);
-
-            while(counting){
-                state.setText(String.valueOf(t.getState()));
-                System.out.println(t.getState());
-                this.validate();
-                this.repaint();
-            }
-        }
-        if(command.equals("Exit Application")){
-            System.exit(0);
-        }
-
-        this.validate();
-        this.repaint();
-    }
-}
-*/
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.text.SimpleDateFormat;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.Timer;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
-public class TimerFrame extends Template implements ActionListener {
-/*
-    double timeLeft=5000;
-    ActionListener countDown=new ActionListener() {
-        public void actionPerformed(ActionEvent e){
+public class TimerFrame {
 
-            timeLeft--;
-            SimpleDateFormat df=new SimpleDateFormat("mm:ss");
-            timeLabel.setText(df.format(timeLeft));
-            System.out.println(timeLeft);
-            if(timeLeft<=0){
-                timer.stop();
+    public static void main(String[] args) {
+        new TimerFrame();
+    }
+
+    public TimerFrame() {
+        EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+
+                JFrame frame = new JFrame("Testing");
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.add(new TestPane());
+                frame.pack();
+                frame.setVisible(true);
             }
+        });
+    }
+
+    public class TestPane extends JPanel {
+
+        private Timer timer;
+        private long startTime = -1;
+        private long duration = 50000;
+
+        private JLabel label;
+
+        public TestPane() {
+            setLayout(new GridBagLayout());
+            timer = new Timer(10, new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    if (startTime < 0) {
+                        startTime = System.currentTimeMillis();
+                    }
+                    long now = System.currentTimeMillis();
+                    long clockTime = now - startTime;
+                    if (clockTime >= duration) {
+                        clockTime = duration;
+                        timer.stop();
+                    }
+                    SimpleDateFormat df = new SimpleDateFormat("mm:ss");
+                    label.setText(df.format(duration - clockTime));
+                }
+            });
+            timer.setInitialDelay(0);
+            addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    if (!timer.isRunning()) {
+                        startTime = -1;
+                        timer.start();
+                    }
+                }
+            });
+            label = new JLabel("...");
+            add(label);
         }
-    }; //End ActionLister decleration
-    Timer timer=new Timer(1, countDown);
 
-    private JLabel timeLabel = new JLabel();
-    private JPanel testPanel = new JPanel(new BorderLayout());
-*/
-    private TimerPanel tp = new TimerPanel();
-
-    public TimerFrame(){
-
-        this.add(tp);
-        this.setVisible(true);
+        @Override
+        public Dimension getPreferredSize() {
+            return new Dimension(200, 200);
+        }
 
     }
 
-
-    public static void main(String[] args){
-        TimerFrame tf = new TimerFrame();
-    }
 }
