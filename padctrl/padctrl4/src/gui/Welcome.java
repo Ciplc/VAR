@@ -38,19 +38,22 @@ public class Welcome extends Template implements ActionListener {
         
         //Formatting and constructing welcomeLabel
         
-        welcomeLabel = new JLabel("Welcome to the VAR Pad Controller!",SwingConstants.CENTER);
+        welcomeLabel = new JLabel("Welcome to the VAR Pad Controller!"
+                ,SwingConstants.CENTER);
         welcomeLabel.setFont(DEFAULT_FONT);
         welcomeLabel.setForeground(Color.WHITE);
         
         //Formatting and constructing instructionLabel
         
-        instructionLabel = new JLabel("To begin initial launch procedures, please enter your",SwingConstants.CENTER);
+        instructionLabel = new JLabel("To begin initial launch procedures, "
+                + "please press the next",SwingConstants.CENTER);
         instructionLabel.setFont(DEFAULT_FONT);
         instructionLabel.setForeground(Color.WHITE);
         
         //Formatting and constructing instructionContLabel
         
-        instructionContLabel = new JLabel("credentials in the next frame by pressing the 'Login' button.",SwingConstants.CENTER);
+        instructionContLabel = new JLabel("button found on the bottom "
+                + "right.",SwingConstants.CENTER);
         instructionContLabel.setFont(DEFAULT_FONT);
         instructionContLabel.setForeground(Color.WHITE);
         
@@ -70,6 +73,10 @@ public class Welcome extends Template implements ActionListener {
         this.add(textPanel,BorderLayout.NORTH);
         this.add(imageLabel,BorderLayout.CENTER);
         
+        //Remove from buttonPanel
+        
+        navigationButtonPanel.remove(returnButton);
+        
         this.setVisible(true);
     }
     
@@ -85,9 +92,7 @@ public class Welcome extends Template implements ActionListener {
         
         if (command.equals("Next")) {
             
-        }
-        if (command.equals("Return")) {
-            
+            Input inputFrame = new Input();
             this.dispose();
         }
         else if (command.equals("Exit Application")) {
