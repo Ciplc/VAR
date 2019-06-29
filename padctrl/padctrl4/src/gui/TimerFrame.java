@@ -23,10 +23,11 @@ public class TimerFrame {
     }
 
     public TimerFrame() {
-        EventQueue.invokeLater(new Runnable() {
+        EventQueue.invokeLater(new Runnable() { //Invoke the timer as a runnable
             @Override
             public void run() {
 
+                // Setup the frame and repack it
                 JFrame frame = new JFrame("Testing");
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.add(new TestPane());
@@ -36,51 +37,51 @@ public class TimerFrame {
         });
     }
 
+    // Creates a JPanel to add the timer stuff too, add a button for holding in here
     public class TestPane extends JPanel {
 
+        // Declare timer obj and set the start time and duration, make duration variable to UI
         private Timer timer;
         private long startTime = -1;
         private long duration = 50000;
-
         private JLabel label;
 
+        // Constructor for the Panel
         public TestPane() {
             setLayout(new GridBagLayout());
-            timer = new Timer(10, new ActionListener() {
-                @Override
+
+
+            // This timer works by setting the system time to a var then tracking time since it set that time then
+            // Subtracting it from the start sys time to get the current time
+            timer = new Timer(10, new ActionListener() { // Set timer method to obj and
+                @Override                                        // and override the actionPerformed
                 public void actionPerformed(ActionEvent e) {
-                    if (startTime < 0) {
-                        startTime = System.currentTimeMillis();
+                    if (startTime < 0) {                         // if start time is less than 0 set the start time to
+                        startTime = System.currentTimeMillis();  // the current sys time in MS
                     }
-                    long now = System.currentTimeMillis();
-                    long clockTime = now - startTime;
-                    if (clockTime >= duration) {
+                    long now = System.currentTimeMillis();       // The current sys time
+                    long clockTime = now - startTime;            // The time on the clock
+                    if (clockTime >= duration) {                 // If clock time passes duration stop the timer
                         clockTime = duration;
                         timer.stop();
                     }
-                    SimpleDateFormat df = new SimpleDateFormat("mm:ss");
-                    label.setText(df.format(duration - clockTime));
+
+                    SimpleDateFormat df = new SimpleDateFormat("mm:ss");    // Format the output in Min:Sec
+                    label.setText(df.format(duration - clockTime));             // Set the label to current time
                 }
             });
-            timer.setInitialDelay(0);
+            timer.setInitialDelay(0);                            // Set the delay on the timer
             addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                    if (!timer.isRunning()) {
+                    if (!timer.isRunning()) {                    // If the timer is not running start it
                         startTime = -1;
                         timer.start();
                     }
                 }
             });
-            label = new JLabel("Click on start.");
+            label = new JLabel("Click on start.");       // Setup initial label
             add(label);
         }
-
-//        @Override
-//        public Dimension getPreferredSize() {
-//            return new Dimension(200, 200);
-//        }
-
     }
-
 }
