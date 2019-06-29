@@ -4,7 +4,6 @@ Written by Henry G for VAR pad 5/4/2019
 Frame which counts down time given by input and also counts up time after the fact
  */
 
-import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
@@ -16,8 +15,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 
 public class TimerFrame {
 
@@ -75,14 +72,14 @@ public class TimerFrame {
                     }
                 }
             });
-            label = new JLabel("...");
+            label = new JLabel("Click on start.");
             add(label);
         }
 
-        @Override
-        public Dimension getPreferredSize() {
-            return new Dimension(200, 200);
-        }
+//        @Override
+//        public Dimension getPreferredSize() {
+//            return new Dimension(200, 200);
+//        }
 
     }
 
