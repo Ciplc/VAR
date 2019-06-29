@@ -8,5 +8,6 @@ public class StatusFeed extends Template implements ActionListener {
 
         this.setTitle("Status Feed");
 
+        //TODO FRAME DEPENDENT ON LOGGING
     }
 }
