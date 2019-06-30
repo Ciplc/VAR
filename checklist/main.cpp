@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <sstream>
 using namespace std;
 
 // Declare Variables
@@ -34,20 +35,23 @@ void writeToFile(){
 void getUserInput(){
 
     // Strings
-    std::cout << "What is the Lifter Name? ";
-    std::cin >> lifterName;
-    std::cout << "What is the date? ";
+    std::cout << "What is the Lifter Name?\n";
+    std::cin.ignore();
+    std::getline(cin, lifterName);
+    std::cout << "What is the date?\n";
     std::cin >> date;
     std::cout << "What is the goal?\n";
-    std::getline(std::cin, goal);
+    std::cin.ignore();
+    std::getline(cin, goal);
+
     // Doubles
-    std::cout << "What is the Dry Mass ";
+    std::cout << "What is the Dry Mass?\n";
     std::cin >> dryMass;
-    std::cout << "What is the Wet Mass ";
+    std::cout << "What is the Wet Mass?\n";
     std::cin >> wetMass;
-    std::cout << "What is the Expected Altitude ";
+    std::cout << "What is the Expected Altitude?\n";
     std::cin >> expectedAltitude;
-    std::cout << "What is the Actual Altitude ";
+    std::cout << "What is the Actual Altitude?\n";
     std::cin >> actualAltitude;
 }
 
