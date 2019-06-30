@@ -2,7 +2,6 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <sstream>
 using namespace std;
 
 // Declare Variables
@@ -35,8 +34,7 @@ void writeToFile(){
 void getUserInput(){
 
     // Strings
-    std::cout << "What is the Lifter Name?\n";
-    std::cin.ignore();
+    std::cout << "What is the Lifter Name?\n ";
     std::getline(cin, lifterName);
     std::cout << "What is the date?\n";
     std::cin >> date;
