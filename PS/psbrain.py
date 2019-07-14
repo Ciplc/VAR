@@ -146,6 +146,11 @@ class Camera:
         self.camera.stop_recording()
         self.dump_run()
 
+    def split_run(self):
+        """Splits the recording when called by stoping and restarting the recording, this has the effect of starting another run"""
+        self.stop_recording()
+        self.start_recording()
+
 
 # Startup method
 def main():
@@ -155,7 +160,7 @@ def main():
 
 
 # Looping task
-def loop():
+def loop()
 
     # Defining objects
     camera = Camera()
