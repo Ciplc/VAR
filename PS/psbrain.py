@@ -160,8 +160,8 @@ def main():
 
 
 # Looping task
-def loop()
-
+def loop():
+    
     # Defining objects
     camera = Camera()
     data = DataWrite()
@@ -174,6 +174,7 @@ def loop()
     while True:
         time.sleep(120)
         data.write_data()
+        camera.split_run()
         camera.stop_test()
 
 
