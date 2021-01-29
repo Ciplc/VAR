@@ -1,0 +1,38 @@
+Input:
+    Date
+    Countdown time
+    Mission Name
+    Launch Location
+    Vehicle
+    Payload
+    Mission Type: Dropdown btwn std and CMP
+    Motor Used
+    Primary Obj
+    Secondary Obj
+    Hold Params: Opt for multiple
+
+    - Mostly done
+        ActionPerformed and Hold Params yet to be completed
+
+Poll:
+    ActionPerformed - done
+
+No go:
+    Pops up to notify flight director that there is still a position 
+    not ready for launch - done
+
+Welcome:
+    Finish input frame
+
+Launch Notification:
+    Pop-up to tell you it launched -done
+
+Status Feed:
+    Use preset labels in scroll pane as countdown proceeds to notify user of 
+    major milestones during the count.
+
+Final Report:
+    Final report with the summary of the launch with a preformatted output with stuff taken during input frame
+
+Timer Frame:
+    Countdown time then runs up time
